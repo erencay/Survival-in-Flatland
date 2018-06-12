@@ -17,9 +17,10 @@ public class GameState extends State {
     public GameState(Handler handler) {
 	super(handler);
         Assets.init();
-        gui = new GUI(handler, player);
-	player = new Player(handler, 32, 32);
         world = new World(handler, "res/Worlds/world1.world");
+        handler.setWorld(world);
+	player = new Player(handler, 32, 32);
+        gui = new GUI(handler, player);
     }
 	
     @Override

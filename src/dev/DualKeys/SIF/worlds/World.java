@@ -1,6 +1,5 @@
 package dev.DualKeys.SIF.worlds;
 
-import dev.DualKeys.SIF.Game;
 import dev.DualKeys.SIF.Handler;
 import dev.DualKeys.SIF.tiles.Tile;
 import dev.DualKeys.SIF.utils.Utils;
