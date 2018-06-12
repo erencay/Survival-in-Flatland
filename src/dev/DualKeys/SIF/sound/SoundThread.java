@@ -41,7 +41,9 @@ public class SoundThread extends Thread {
         FloatControl gainControl = (FloatControl) soundClip.getControl(FloatControl.Type.MASTER_GAIN);
         gainControl.setValue(volume);
         soundClip.start();
-        soundClip.loop(loop);
+        //soundClip.setLoopPoints(0, 203);
+        soundClip.loop(Clip.LOOP_CONTINUOUSLY);
+        
     }
 
     public void run() {

@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SIF:jar">
+    <output-path>$PROJECT_DIR$/classes/artifacts/SIF_jar</output-path>
+    <root id="archive" name="SIF.jar">
+      <element id="module-output" name="SIF" />
+      <element id="library" level="module" name="res" module-name="SIF" />
+    </root>
+  </artifact>
+</component>

@@ -9,9 +9,7 @@ public class AudioMap {
 
     public AudioMap() {
         audioTable = new HashMap<String, String>();
-        audioTable.put("mainTheme", "/res/Music/maintheme.wav");
-        soundThread = new SoundThread();
-        soundThread.run();
+        audioTable.put("mainTheme", "/Music/maintheme.wav");
     }
 
     public static HashMap<String, String> getAudioTable() {
