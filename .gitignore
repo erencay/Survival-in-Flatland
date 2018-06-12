@@ -1,4 +1,5 @@
-/idea/*
+/.idea/*
+/build/*
 /classes/*
 build.xml
 SIF.iml
