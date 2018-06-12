@@ -4,6 +4,7 @@ import dev.DualKeys.SIF.Handler;
 import dev.DualKeys.SIF.tiles.Tile;
 import dev.DualKeys.SIF.utils.Utils;
 import java.awt.Graphics;
+import java.nio.file.Files;
 
 public class World {
 
@@ -43,7 +44,7 @@ public class World {
     }
 
     private void loadWorld(String path) {
-        String file = Utils.loadFileAsString(path);
+        String file = new String(Files.readAllBytes(path));
         String[] tokens = file.split("\\s+");
         width = Utils.parseInt(tokens[0]);
         height = Utils.parseInt(tokens[1]);
