@@ -65,4 +65,12 @@ public class World {
         return spawnY;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
 }

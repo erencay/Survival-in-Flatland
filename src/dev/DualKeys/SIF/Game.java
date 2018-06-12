@@ -43,7 +43,7 @@ public class Game implements Runnable {
         this.height = height;
         keyManager = new KeyManager();
         
-        gameCamera = new GameCamera(this, 0, 0);
+        gameCamera = new GameCamera(handler, 0, 0);
         handler = new Handler(this);
 
         this.start();

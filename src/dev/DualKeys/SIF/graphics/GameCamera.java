@@ -1,30 +1,39 @@
 package dev.DualKeys.SIF.graphics;
 
-import dev.DualKeys.SIF.Game;
+import dev.DualKeys.SIF.Handler;
 import dev.DualKeys.SIF.entities.Entity;
+import dev.DualKeys.SIF.tiles.Tile;
 
 public class GameCamera {
 
-    private Game game;
+    private Handler handler;
     private float xOffset, yOffset;
-    
-    public GameCamera(Game game, float xOffset, float yOffset) {
-        this.game = game;
+
+    public GameCamera(Handler handler, float xOffset, float yOffset) {
+        this.handler = handler;
         this.xOffset = xOffset;
         this.yOffset = yOffset;
     }
-    
+
     public void checkBlankSpace() {
         if (xOffset < 0) {
             xOffset = 0;
+        } else if (xOffset > handler.getWorld().getWidth() * Tile.WIDTH - handler.getWidth()) {
+            xOffset = handler.getWorld().getWidth() * Tile.WIDTH - handler.getWidth();
+        }
+        if (yOffset < 0) {
+            yOffset = 0;
+        } else if (yOffset > handler.getWorld().getHeight() * Tile.HEIGHT - handler.getHeight()) {
+            yOffset = handler.getWorld().getHeight() * Tile.HEIGHT - handler.getHeight();
         }
     }
-    
+
     public void centerOn(Entity e) {
-        xOffset = e.getX() - game.width / 2 + e.getWidth() / 2;
-        yOffset = e.getY() - game.height / 2 + e.getHeight() / 2;
+        xOffset = e.getX() - handler.getWidth() / 2 + e.getWidth() / 2;
+        yOffset = e.getY() - handler.getHeight() / 2 + e.getHeight() / 2;
+        checkBlankSpace();
     }
-    
+
     public void move(float xAmt, float yAmt) {
         xOffset += xAmt;
         yOffset += yAmt;
@@ -45,5 +54,5 @@ public class GameCamera {
     public void setyOffset(float yOffset) {
         this.yOffset = yOffset;
     }
-    
+
 }

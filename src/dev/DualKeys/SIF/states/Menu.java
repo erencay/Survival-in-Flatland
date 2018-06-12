@@ -14,6 +14,7 @@ public class Menu extends State {
     private Handler handler;
     
     public Menu(Handler handler) {
+        super(handler);
         this.handler = handler;
     }
     

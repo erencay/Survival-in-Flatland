@@ -3,6 +3,7 @@ package dev.DualKeys.SIF.entities.creatures;
 import java.awt.Graphics;
 
 import dev.DualKeys.SIF.Handler;
+import dev.DualKeys.SIF.entities.Entity;
 import dev.DualKeys.SIF.graphics.Animation;
 import dev.DualKeys.SIF.graphics.Assets;
 import java.awt.image.BufferedImage;
@@ -31,7 +32,6 @@ public class Player extends Creature {
         getInput();
         move();
         handler.getGameCamera().centerOn(this);
-        handler.getGameCamera().checkBlankSpace();
     }
 
     public void getInput() {

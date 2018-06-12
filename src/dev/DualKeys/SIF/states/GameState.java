@@ -3,7 +3,6 @@ package dev.DualKeys.SIF.states;
 import dev.DualKeys.SIF.worlds.World;
 import java.awt.Graphics;
 
-import dev.DualKeys.SIF.Game;
 import dev.DualKeys.SIF.Handler;
 import dev.DualKeys.SIF.UI.GUI;
 import dev.DualKeys.SIF.entities.creatures.Player;
@@ -11,16 +10,15 @@ import dev.DualKeys.SIF.graphics.Assets;
 
 public class GameState extends State {
 
-    private Game game;
     private Player player;
     private GUI gui;
     private World world;
 	
     public GameState(Handler handler) {
-	this.game = game;
+	super(handler);
         Assets.init();
-	player = new Player(handler, 32, 32);
         gui = new GUI(handler, player);
+	player = new Player(handler, 32, 32);
         world = new World(handler, "res/Worlds/world1.world");
     }
 	
