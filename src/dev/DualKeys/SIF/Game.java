@@ -3,8 +3,6 @@ package dev.DualKeys.SIF;
 import dev.DualKeys.SIF.graphics.Assets;
 import dev.DualKeys.SIF.graphics.GameCamera;
 import dev.DualKeys.SIF.input.KeyManager;
-import dev.DualKeys.SIF.sound.AudioMap;
-import dev.DualKeys.SIF.sound.SoundThread;
 import dev.DualKeys.SIF.states.GameState;
 import dev.DualKeys.SIF.states.Menu;
 import dev.DualKeys.SIF.states.State;
@@ -31,8 +29,6 @@ public class Game implements Runnable {
 
     private Handler handler;
 
-    private SoundThread soundThread;
-
     public Game(String title, int width, int height) {
         this.title = title;
         this.width = width;
@@ -54,9 +50,6 @@ public class Game implements Runnable {
         StateManager.setState(menuState);
 
         Assets.init();
-        new AudioMap();
-        soundThread = new SoundThread();
-        soundThread.run();
     }
 
     private void update() {

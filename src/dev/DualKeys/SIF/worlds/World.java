@@ -5,6 +5,13 @@ import dev.DualKeys.SIF.tiles.Tile;
 import dev.DualKeys.SIF.utils.Utils;
 
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class World {
 
@@ -13,7 +20,7 @@ public class World {
     public static int spawnX, spawnY;
     private int[][] tiles;
 
-    public World(Handler handler, String path) {
+    public World(Handler handler, InputStream path) {
         this.handler = handler;
         loadWorld(path);
     }
@@ -43,17 +50,32 @@ public class World {
         return t;
     }
 
-    private void loadWorld(String path) {
-        String file = Utils.loadFileAsString(path);
-        String[] tokens = file.split("\\s+");
-        width = Utils.parseInt(tokens[0]);
-        height = Utils.parseInt(tokens[1]);
+    private void loadWorld(InputStream path) {
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(path))) {
+            // read first line with size
+            String[] size = bufferedReader.readLine().split("\\s+");
+            width = Utils.parseInt(size[0]);
+            height = Utils.parseInt(size[1]);
 
-        tiles = new int[width][height];
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 2]);
+            // parse other lines
+            List<String> tokens = new ArrayList<>();
+            try {
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    tokens.addAll(Arrays.asList(line.split("\\s+")));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+
+            tiles = new int[width][height];
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    tiles[x][y] = Utils.parseInt(tokens.get((x + y * width)));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
