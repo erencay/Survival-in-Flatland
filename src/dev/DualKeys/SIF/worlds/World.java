@@ -44,7 +44,7 @@ public class World {
     }
 
     private void loadWorld(String path) {
-        String file = new String(Files.readAllBytes(path));
+        String file = Utils.loadFileAsString(path);
         String[] tokens = file.split("\\s+");
         width = Utils.parseInt(tokens[0]);
         height = Utils.parseInt(tokens[1]);
