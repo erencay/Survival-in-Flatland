@@ -1,46 +1,38 @@
 package dev.DualKeys.SIF;
 
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-
 import dev.DualKeys.SIF.graphics.Assets;
 import dev.DualKeys.SIF.graphics.GameCamera;
-import dev.DualKeys.SIF.graphics.SpriteSheet;
 import dev.DualKeys.SIF.input.KeyManager;
-import dev.DualKeys.SIF.sound.SoundThread;
 import dev.DualKeys.SIF.sound.AudioMap;
+import dev.DualKeys.SIF.sound.SoundThread;
 import dev.DualKeys.SIF.states.GameState;
 import dev.DualKeys.SIF.states.Menu;
 import dev.DualKeys.SIF.states.State;
 import dev.DualKeys.SIF.states.StateManager;
 
+import java.awt.*;
+import java.awt.image.BufferStrategy;
+
 public class Game implements Runnable {
 
     private Launcher display;
-    public String title;
-    public int width, height;
+    private String title;
+    private int width, height;
 
-    public Thread thread;
-    public Boolean running;
+    private Thread thread;
+    private Boolean running;
 
-    public BufferStrategy bs;
-    public Graphics g;
-
-    public BufferedImage sheet;
-    public SpriteSheet sSheet;
-
-    public KeyManager keyManager;
+    private KeyManager keyManager;
 
     public static State gameState;
     public static State menuState;
-    
+
     private static GameCamera gameCamera;
 
     private Handler handler;
-    
+
     private SoundThread soundThread;
-    
+
     public Game(String title, int width, int height) {
         this.title = title;
         this.width = width;
@@ -53,7 +45,7 @@ public class Game implements Runnable {
         this.start();
     }
 
-    public void init() {
+    private void init() {
         display = new Launcher(title, width, height);
         display.getFrame().addKeyListener(keyManager);
 
@@ -67,18 +59,18 @@ public class Game implements Runnable {
         soundThread.run();
     }
 
-    public void update() {
+    private void update() {
         keyManager.update();
         StateManager.getState().update();
     }
 
-    public void render() {
-        bs = display.getCanvas().getBufferStrategy();
+    private void render() {
+        BufferStrategy bs = display.getCanvas().getBufferStrategy();
         if (bs == null) {
             display.getCanvas().createBufferStrategy(3);
             return;
         }
-        g = bs.getDrawGraphics();
+        Graphics g = bs.getDrawGraphics();
         g.clearRect(0, 0, width, height);
         //
         StateManager.getState().render(g);
@@ -124,13 +116,13 @@ public class Game implements Runnable {
 
     }
 
-    public synchronized void start() {
+    private synchronized void start() {
         running = true;
         thread = new Thread(this);
         thread.start();
     }
 
-    public synchronized void stop() {
+    private synchronized void stop() {
         running = false;
         try {
             thread.join();
@@ -139,19 +131,19 @@ public class Game implements Runnable {
         }
     }
 
-    public KeyManager getKeyManager() {
+    KeyManager getKeyManager() {
         return keyManager;
     }
 
-    public GameCamera getGameCamera() {
+    GameCamera getGameCamera() {
         return gameCamera;
     }
     
-    public int getHeight() {
+    int getHeight() {
         return height;
     }
     
-    public int getWidth() {
+    int getWidth() {
         return width;
     }
     
