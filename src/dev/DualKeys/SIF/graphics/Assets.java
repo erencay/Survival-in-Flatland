@@ -8,13 +8,15 @@ public class Assets {
 
     public static BufferedImage grass, dirt, river, sand, pond, tree, rock;
     public static BufferedImage fenceHoriz, fenceVert, fenceTL, fenceTR, fenceBL, fenceBR;
-    public static BufferedImage start, startHover, title, player, woodUI;
+    public static BufferedImage start, startHover, title, player, zombie, woodUI;
     public static BufferedImage[] playerDown, playerUp, playerLeft, playerRight;
+    public static BufferedImage[] zombieDown, zombieUp, zombieLeft, zombieRight;
 
     public static void init() {
 
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/Textures/TileSheet.png"));
         SpriteSheet pSheet = new SpriteSheet(ImageLoader.loadImage("/Entity/EntitySheet_Player.png"));
+        SpriteSheet zSheet = new SpriteSheet(ImageLoader.loadImage("/Entity/EntitySheet_Zombie.png"));
 
         // Blocks
         grass = sheet.crop(0, 0, SIZE, SIZE);
@@ -58,6 +60,24 @@ public class Assets {
         playerRight[0] = pSheet.crop(SIZE * 3, SIZE, SIZE, SIZE);
         playerRight[1] = pSheet.crop(SIZE * 3, SIZE * 2, SIZE, SIZE);
 
+        // Zombie
+        zombie = zSheet.crop(0, 0, SIZE, SIZE);
+
+        zombieDown = new BufferedImage[2];
+        zombieDown[0] = zSheet.crop(0, SIZE, SIZE, SIZE);
+        zombieDown[1] = zSheet.crop(0, SIZE * 2, SIZE, SIZE);
+
+        zombieUp = new BufferedImage[2];
+        zombieUp[0] = zSheet.crop(SIZE, SIZE, SIZE, SIZE);
+        zombieUp[1] = zSheet.crop(SIZE, SIZE * 2, SIZE, SIZE);
+
+        zombieLeft = new BufferedImage[2];
+        zombieLeft[0] = zSheet.crop(SIZE * 2, SIZE, SIZE, SIZE);
+        zombieLeft[1] = zSheet.crop(SIZE * 2, SIZE * 2, SIZE, SIZE);
+
+        zombieRight = new BufferedImage[2];
+        zombieRight[0] = zSheet.crop(SIZE * 3, SIZE, SIZE, SIZE);
+        zombieRight[1] = zSheet.crop(SIZE * 3, SIZE * 2, SIZE, SIZE);
     }
 
 }

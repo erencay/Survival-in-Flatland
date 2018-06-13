@@ -30,7 +30,6 @@ public class GUI {
         timer = 0;
         hTimer = 0;
         lastTime = System.currentTimeMillis();
-        player.setHunger(5);
     }
     
     public void update() {

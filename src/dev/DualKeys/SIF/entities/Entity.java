@@ -1,14 +1,18 @@
 package dev.DualKeys.SIF.entities;
 
-import java.awt.Graphics;
+import dev.DualKeys.SIF.Handler;
+
+import java.awt.*;
 
 
 public abstract class Entity {
 
+    protected Handler handler;
     protected float x, y;
     protected int width, height;
 
-    public Entity(float x, float y, int width, int height) {
+    public Entity(Handler handler, float x, float y, int width, int height) {
+        this.handler = handler;
         this.x = x;
         this.y = y;
         this.width = this.width;

@@ -1,10 +1,10 @@
 package dev.DualKeys.SIF.entities.creatures;
 
-import java.awt.Graphics;
-
 import dev.DualKeys.SIF.Handler;
 import dev.DualKeys.SIF.graphics.Animation;
 import dev.DualKeys.SIF.graphics.Assets;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Player extends Creature {
@@ -13,7 +13,7 @@ public class Player extends Creature {
     private Animation up, down, left, right;
 
     public Player(Handler handler, int x, int y) {
-        super(x, y, Creature.DEF_WIDTH, Creature.DEF_HEIGHT);
+        super(handler, x, y, Creature.DEF_WIDTH, Creature.DEF_HEIGHT);
         this.handler = handler;
         
         down = new Animation(500, Assets.playerDown);

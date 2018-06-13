@@ -1,5 +1,6 @@
 package dev.DualKeys.SIF.entities.creatures;
 
+import dev.DualKeys.SIF.Handler;
 import dev.DualKeys.SIF.entities.Entity;
 
 public abstract class Creature extends Entity {
@@ -9,13 +10,15 @@ public abstract class Creature extends Entity {
     public static final float DEF_SPEED = 3.0f;
     public static final int DEF_WIDTH = 32,
                             DEF_HEIGHT = 32;
-    
+
+    protected Handler handler;
     protected int health, hunger;
     protected float speed;
     protected float xMove, yMove;
 
-    public Creature(float x, float y, int width, int height) {
-        super(x, y, width, height);
+    public Creature(Handler handler, float x, float y, int width, int height) {
+        super(handler, x, y, width, height);
+        this.handler = handler;
         health = DEF_HEALTH;
         hunger = DEF_HUNGER;
         speed = DEF_SPEED;
