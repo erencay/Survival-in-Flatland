@@ -27,7 +27,7 @@ public class Game implements Runnable {
 
     private static GameCamera gameCamera;
 
-    private Handler handler;
+    public static Handler handler;
 
     public Game(String title, int width, int height) {
         this.title = title;
@@ -42,12 +42,12 @@ public class Game implements Runnable {
     }
 
     private void init() {
-        display = new Launcher(title, width, height);
-        display.getFrame().addKeyListener(keyManager);
-
         gameState = new GameState(handler);
         menuState = new Menu(handler);
         StateManager.setState(menuState);
+
+        display = new Launcher(title, width, height);
+        display.getFrame().addKeyListener(keyManager);
 
         Assets.init();
     }
@@ -99,7 +99,6 @@ public class Game implements Runnable {
             }
 
             if (timer >= 1000000000) {
-                System.out.println(ticks);
                 ticks = 0;
                 timer = 0;
             }
@@ -131,7 +130,11 @@ public class Game implements Runnable {
     GameCamera getGameCamera() {
         return gameCamera;
     }
-    
+
+    public static Handler getHandler() {
+        return handler;
+    }
+
     int getHeight() {
         return height;
     }

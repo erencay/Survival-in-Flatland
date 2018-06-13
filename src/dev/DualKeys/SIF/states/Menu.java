@@ -1,44 +1,86 @@
 package dev.DualKeys.SIF.states;
 
-import java.awt.Color;
-import java.awt.Graphics;
-
-import dev.DualKeys.SIF.Game;
 import dev.DualKeys.SIF.Handler;
 import dev.DualKeys.SIF.graphics.Assets;
 
+import java.awt.*;
+
 public class Menu extends State {
 
-    public static float loading = 0;
 
     private Handler handler;
-    
+
+    private int choice = 0;
+    private final String[] options = {
+            "Start",
+            "Settings",
+            "Quit"
+    };
+    private Font font;
+
     public Menu(Handler handler) {
         super(handler);
         this.handler = handler;
+        font = new Font("Arial", Font.BOLD, 50);
     }
-    
-    public static float loading() {
-	loading += 0.5;
-	return loading;
-    }
-    
+
     @Override
     public void update() {
-	if (loading >= 200) {
-            StateManager.setState(Game.gameState);
-	}
+        keyPressed();
     }
 
     @Override
     public void render(Graphics g) {
-	g.setColor(Color.black);
-	g.fillRect(0, 0, handler.getWidth(), handler.getHeight());
-	g.setColor(Color.green);
-	g.fillRect((handler.getWidth() / 2) - 100, (handler.getHeight() / 2) - 10, (int)loading(), 20);
-	g.setColor(Color.white);
-	g.drawRect((handler.getWidth() / 2) - 100, (handler.getHeight() / 2) - 10, 200, 20);
-	g.drawImage(Assets.title, (handler.getWidth() / 2) - 256, 200, 512, 64, null);
+        g.setColor(Color.blue);
+        g.fillRect(0, 0, handler.getWidth(), handler.getHeight());
+        g.setFont(font);
+        for(int i = 0; i < options.length; i++) {
+            int w = g.getFontMetrics().stringWidth(options[i]);
+            if(i == choice) {
+                g.setColor(Color.white);
+            } else {
+                g.setColor(Color.gray);
+            }
+            g.drawString(options[i], handler.getWidth() / 2 - w / 2, 275 + i * 50);
+        }
+        g.drawImage(Assets.title, handler.getWidth() / 2 - 256, 64, 512, 64, null);
+    }
+
+    private void select() {
+        switch (choice) {
+            case 0:
+                StateManager.setState(handler.getGameState());
+                break;
+            case 1:
+                StateManager.setState(handler.getGameState());
+                break;
+            case 2:
+                System.exit(0);
+            default:
+                break;
+        }
+    }
+
+    public void keyPressed() {
+        if(handler.getKeyManager().select){
+            select();
+        }
+        if(handler.getKeyManager().menuUp) {
+            choice--;
+            if(choice == -1) {
+                choice = options.length - 1;
+            }
+        }
+        if(handler.getKeyManager().menuDown) {
+            choice++;
+            if(choice == options.length) {
+                choice = 0;
+            }
+        }
     }
 
 }
+
+
+
+

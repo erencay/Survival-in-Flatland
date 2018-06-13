@@ -5,8 +5,8 @@ import java.awt.event.KeyListener;
 
 public class KeyManager implements KeyListener {
 
-    private boolean[] keys;
-    public boolean up, down, left, right, food;
+    public boolean[] keys;
+    public boolean up, down, left, right, food, select, menuDown, menuUp;
 
     public KeyManager() {
         keys = new boolean[256];
@@ -18,6 +18,9 @@ public class KeyManager implements KeyListener {
         left = keys[KeyEvent.VK_A];
         right = keys[KeyEvent.VK_D];
         food = keys[KeyEvent.VK_F];
+        select = keys[KeyEvent.VK_ENTER];
+        menuDown = keys[KeyEvent.VK_DOWN];
+        menuUp = keys[KeyEvent.VK_UP];
     }
 
     @Override

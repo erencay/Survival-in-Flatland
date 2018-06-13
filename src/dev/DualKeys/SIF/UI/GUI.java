@@ -30,6 +30,7 @@ public class GUI {
         timer = 0;
         hTimer = 0;
         lastTime = System.currentTimeMillis();
+        player.setHunger(5);
     }
     
     public void update() {
@@ -40,19 +41,27 @@ public class GUI {
         hTimer += System.currentTimeMillis() - lastTime;
         lastTime = System.currentTimeMillis();
 
-        if (timer > speed) {
-            timer = 0;
-            if (health < MAX_HEALTH) {
-                player.setHealth(health + 1);
+        if (handler.getState() == handler.getGameState()) {
+            if (timer > speed) {
+                timer = 0;
+                if (health < MAX_HEALTH && hunger >= 85) {
+                    health++;
+                }
+            }
+
+            if (hTimer > hSpeed) {
+                hTimer = 0;
+                if (hunger > 0) {
+                    hunger--;
+                } else if (hunger == 0) {
+                    health--;
+                }
+            } else if (hunger > 100) {
+                hunger = 100;
             }
         }
-        
-        if (hTimer > hSpeed) {
-            hTimer = 0;
-            if (hunger > 0) {
-                player.setHunger(hunger - 1);
-            }
-        }
+        player.setHealth(health);
+        player.setHunger(hunger);
     }
     
     public void render(Graphics g) {

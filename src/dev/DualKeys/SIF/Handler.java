@@ -2,6 +2,8 @@ package dev.DualKeys.SIF;
 
 import dev.DualKeys.SIF.graphics.GameCamera;
 import dev.DualKeys.SIF.input.KeyManager;
+import dev.DualKeys.SIF.states.State;
+import dev.DualKeys.SIF.states.StateManager;
 import dev.DualKeys.SIF.worlds.World;
 
 public class Handler {
@@ -44,5 +46,17 @@ public class Handler {
     public void setWorld(World world) {
         this.world = world;
     }
-    
+
+    public State getGameState() {
+        return game.gameState;
+    }
+
+    public State getMenuState() {
+        return game.menuState;
+    }
+
+    public State getState() {
+        return StateManager.getState();
+    }
+
 }
