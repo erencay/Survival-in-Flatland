@@ -38,12 +38,13 @@ public class Game implements Runnable {
         handler = new Handler(this);
         gameCamera = new GameCamera(handler, 0, 0);
 
+        gameState = new GameState(handler);
+        menuState = new Menu(handler);
+
         this.start();
     }
 
     private void init() {
-        gameState = new GameState(handler);
-        menuState = new Menu(handler);
         StateManager.setState(menuState);
 
         display = new Launcher(title, width, height);

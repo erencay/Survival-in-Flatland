@@ -10,13 +10,13 @@ import java.awt.image.BufferedImage;
 
 public class Zombie extends Creature {
 
-    private Handler handler;
-    private Player player;
+    private static Handler handler;
+    private static Player player;
 
     private Animation up, down, left, right;
 
-    public Zombie(Handler handler, Player player, float x, float y, int width, int height) {
-        super(handler, x, y, width, height);
+    public Zombie(Handler handler, Player player, float x, float y) {
+        super(handler, x, y, Creature.DEF_WIDTH, Creature.DEF_HEIGHT);
         this.player = player;
         this.handler = handler;
         this.setSpeed(2.5f);
