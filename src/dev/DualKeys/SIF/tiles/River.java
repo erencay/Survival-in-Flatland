@@ -8,7 +8,4 @@ public class River extends Tile {
         super(Assets.river, id);
     }
 
-    public boolean isSolid() {
-        return true;
-    }
 }
