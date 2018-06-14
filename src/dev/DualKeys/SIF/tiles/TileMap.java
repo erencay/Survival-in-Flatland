@@ -6,15 +6,15 @@ public class TileMap {
     private int height;
 
     public TileMap(int height, int width) {
-        this.tiles = new int[width][height];
+        this.tiles = new int[height][width];
         this.height = height;
         this.width = width;
     }
 
     public TileMap(int[][] tiles) {
         this.tiles = tiles;
-        this.height = tiles[0].length;
-        this.width = tiles.length;
+        this.height = tiles.length;
+        this.width = tiles[0].length;
     }
 
     public Tile getTile(int x, int y) {
