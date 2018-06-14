@@ -8,12 +8,14 @@ public abstract class Creature extends Entity {
 
     public static final int DEF_HEALTH = 100;
     public static final int DEF_HUNGER = 100;
+    public static final int DEF_THIRST = 100;
+    public static final int DEF_STAMINA = 50;
     public static final float DEF_SPEED = 3.0f;
     public static final int DEF_WIDTH = 32,
                             DEF_HEIGHT = 32;
 
     protected Handler handler;
-    protected int health, hunger;
+    protected int health, hunger, stamina, thirst;
     protected float speed;
     protected float xMove, yMove;
 
@@ -23,6 +25,8 @@ public abstract class Creature extends Entity {
         health = DEF_HEALTH;
         hunger = DEF_HUNGER;
         speed = DEF_SPEED;
+        thirst = DEF_THIRST;
+        stamina = DEF_STAMINA;
         xMove = 0;
         yMove = 0;
     }
@@ -107,5 +111,21 @@ public abstract class Creature extends Entity {
     public void setHunger(int hunger) {
         this.hunger = hunger;
     }
-    
+
+    public int getStamina() {
+        return stamina;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
+
+    public int getThirst() {
+        return thirst;
+    }
+
+    public void setThirst(int thirst) {
+        this.thirst = thirst;
+    }
+
 }

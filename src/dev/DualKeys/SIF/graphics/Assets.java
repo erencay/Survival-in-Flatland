@@ -36,7 +36,7 @@ public class Assets {
         fenceBR = sheet.crop(SIZE * 9, SIZE, SIZE, SIZE);
 
         // UI
-        woodUI = sheet.crop(0, SIZE * 3, SIZE, SIZE);
+        woodUI = sheet.crop(0, SIZE * 3, SIZE * 2, SIZE * 2);
         title = sheet.crop(0, SIZE * 2, SIZE * 8, SIZE);
         start = sheet.crop(SIZE * 8, SIZE * 2, SIZE * 2, SIZE);
         startHover = sheet.crop(SIZE * 8, SIZE * 2, SIZE * 2, SIZE);

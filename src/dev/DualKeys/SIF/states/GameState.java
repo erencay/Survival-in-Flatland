@@ -1,5 +1,7 @@
 package dev.DualKeys.SIF.states;
 
+import dev.DualKeys.SIF.GameTimeInfo;
+import dev.DualKeys.SIF.GameTimeManager;
 import dev.DualKeys.SIF.Handler;
 import dev.DualKeys.SIF.UI.GUI;
 import dev.DualKeys.SIF.entities.creatures.Player;
@@ -16,33 +18,31 @@ public class GameState extends State {
     private Zombie[] zombies;
     private GUI gui;
     private World world;
+    private GameTimeManager gameTimeManager;
 
-    public static int night, day, days, zTime;
-    public static long timer, zTimer, lastTime;
+    GameTimeInfo timeInfo;
+    GameTimeInfo lastZombieSpawn = timeInfo;
 
-    public GameState(Handler handler) {
+    public GameState(Handler handler, GameTimeManager gameTimeManager) {
         super(handler);
+        this.gameTimeManager = gameTimeManager;
         Assets.init();
 
-        world = new World(handler, getClass().getResourceAsStream("/Worlds/world1.world"), false);
+        world = new World(handler, getClass().getResourceAsStream("/Worlds/lake.world"), false);
         handler.setWorld(world);
         player = new Player(handler, 32, 32);
-        gui = new GUI(handler, player);
+        gui = new GUI(handler, player, gameTimeManager);
         zombies = new Zombie[7];
-
-        night = 1080000;
-        day = 360000;
-        days = 1;
-        zTime = 60000;
-        timer = 0;
-        zTimer = 0;
-        lastTime = System.currentTimeMillis();
     }
 
     @Override
     public void update() {
         world.update();
         player.update();
+        gui.update();
+
+        GameTimeInfo currentTime = gameTimeManager.getGameTimeInfo();
+
         for (int i = 0; i < zombies.length - 1; i++) {
             if (zombies[i] != null) {
                 zombies[i].update();
@@ -52,24 +52,15 @@ public class GameState extends State {
             zombies[0] = zombies[6]; // zom6 zom1 zom2 zom3 zom4 zom5 null
             zombies[6] = null;
         }
-        gui.update();
-
-        timer += System.currentTimeMillis() - lastTime;
-        zTimer += System.currentTimeMillis() - lastTime;
-        lastTime = System.currentTimeMillis();
-        if (timer >= 1440000) {
-            timer = 0;
-            days++;
-        }
-        if (timer > night || timer < day) {
-            if (zTimer > zTime) {
-                zTimer = 0;
+        if (currentTime.isNightTime()) {
+            if (lastZombieSpawn == null || currentTime.elapsedMinutes() - lastZombieSpawn.elapsedMinutes() >= 60) {
                 for (int i = 0; i < zombies.length; i++) {
                     if (zombies[i] == null) {
                         zombies[i] = new Zombie(handler,
-                                                player,
-                                                (float) Math.floor(Math.random() * (handler.getWorld().getWidth() * Tile.WIDTH)),
-                                                (float) Math.floor(Math.random() * (handler.getWorld().getHeight() * Tile.HEIGHT)));
+                                player,
+                                (float) Math.floor(Math.random() * (handler.getWorld().getWidth() * Tile.WIDTH)),
+                                (float) Math.floor(Math.random() * (handler.getWorld().getHeight() * Tile.HEIGHT)));
+                        lastZombieSpawn = currentTime;
                         break;
                     }
                 }
@@ -86,6 +77,6 @@ public class GameState extends State {
                 zombies[i].render(g);
             }
         }
-        gui.render(g, timer, days);
+        gui.render(g);
     }
 }

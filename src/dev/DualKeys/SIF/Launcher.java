@@ -1,9 +1,7 @@
 package dev.DualKeys.SIF;
 
-import java.awt.Canvas;
-import java.awt.Dimension;
-
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
 
 public class Launcher {
 
@@ -39,7 +37,7 @@ public class Launcher {
     }
 
     public static void main(String[] args) {
-        new Game("Survival in Flatland", 800, 640);
+        new Game("Survival in Flatland", 800, 672);
     }
 
     public Canvas getCanvas() {

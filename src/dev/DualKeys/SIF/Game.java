@@ -23,12 +23,14 @@ public class Game implements Runnable {
 
     private KeyManager keyManager;
 
-    public static State gameState;
-    public static State menuState;
+    public State gameState;
+    public State menuState;
 
-    private static GameCamera gameCamera;
+    private GameCamera gameCamera;
 
     public static Handler handler;
+
+    private GameTimeManager gameTimeManager;
 
     public Game(String title, int width, int height) {
         this.title = title;
@@ -38,8 +40,9 @@ public class Game implements Runnable {
         
         handler = new Handler(this);
         gameCamera = new GameCamera(handler, 0, 0);
+        gameTimeManager = new GameTimeManager(1,(short)9, (short)01);
 
-        gameState = new GameState(handler);
+        gameState = new GameState(handler, gameTimeManager);
         menuState = new Menu(handler);
 
         this.start();
@@ -56,6 +59,7 @@ public class Game implements Runnable {
 
     private void update() {
         keyManager.update();
+        gameTimeManager.update();
         StateManager.getState().update();
     }
 
