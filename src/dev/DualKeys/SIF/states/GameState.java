@@ -23,16 +23,16 @@ public class GameState extends State {
     public GameState(Handler handler) {
         super(handler);
         Assets.init();
-        world = new World(handler, getClass().getResourceAsStream("/Worlds/world.world"), true);
+        world = new World(handler, getClass().getResourceAsStream("/Worlds/lake.world"), false);
         handler.setWorld(world);
         player = new Player(handler, 32, 32);
         gui = new GUI(handler, player);
         zombies = new Zombie[7];
 
-        night = 108000;
-        day = 36000;
+        night = 1080000;
+        day = 360000;
         days = 1;
-        zTime = 6000;
+        zTime = 60000;
         timer = 0;
         zTimer = 0;
         lastTime = System.currentTimeMillis();
