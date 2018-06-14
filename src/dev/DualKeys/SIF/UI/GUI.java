@@ -19,7 +19,7 @@ public class GUI {
     
     private int speed, hSpeed;
     private int health, hunger;
-    private long time;
+    private int time;
     private int days;
     private long lastTime, timer, hTimer;
     
@@ -31,9 +31,11 @@ public class GUI {
         hSpeed = 5000;
         timer = 0;
         hTimer = 0;
-        time = GameState.getTimer() / 100;
+        time = (int)GameState.getTimer() / 100;
         days = GameState.getDays();
         lastTime = System.currentTimeMillis();
+        System.out.println(time);
+        System.out.println(days);
     }
     
     public void update() {

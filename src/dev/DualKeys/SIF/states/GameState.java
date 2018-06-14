@@ -21,15 +21,15 @@ public class GameState extends State {
     public static long timer, zTimer, lastTime;
 
     public GameState(Handler handler) {
-	    super(handler);
+        super(handler);
         Assets.init();
         world = new World(handler, getClass().getResourceAsStream("/Worlds/world1.world"));
         handler.setWorld(world);
-	    player = new Player(handler, 32, 32);
+        player = new Player(handler, 32, 32);
         gui = new GUI(handler, player);
         zombies = new Zombie[7];
 
-        night = 6000;
+        night = 108000;
         day = 36000;
         days = 1;
         zTime = 6000;
@@ -37,11 +37,11 @@ public class GameState extends State {
         zTimer = 0;
         lastTime = System.currentTimeMillis();
     }
-	
+
     @Override
     public void update() {
         world.update();
-	    player.update();
+        player.update();
         for (int i = 0; i < zombies.length - 1; i++) {
             if (zombies[i] != null) {
                 zombies[i].update();
@@ -61,16 +61,16 @@ public class GameState extends State {
             days++;
         }
         if (timer > night && timer < day) {
-            System.out.println("True1");
             if (zTimer > zTime) {
-                System.out.println("True2");
                 zTimer = 0;
                 for (int i = 0; i < zombies.length; i++) {
                     if (zombies[i] == null) {
-                        System.out.println("Zombie");
-                        zombies[i] = new Zombie(handler, player, (float) Math.floor(Math.random() * (handler.getWorld().getWidth() * Tile.WIDTH)), (float) Math.floor(Math.random() * (handler.getWorld().getHeight() * Tile.HEIGHT)));
+                        zombies[i] = new Zombie(handler,
+                                                player,
+                                                (float) Math.floor(Math.random() * (handler.getWorld().getWidth() * Tile.WIDTH)),
+                                                (float) Math.floor(Math.random() * (handler.getWorld().getHeight() * Tile.HEIGHT)));
+                        break;
                     }
-                    return;
                 }
             }
         }
@@ -79,7 +79,7 @@ public class GameState extends State {
     @Override
     public void render(Graphics g) {
         world.render(g);
-	    player.render(g);
+        player.render(g);
         for (int i = 0; i < zombies.length - 1; i++) {
             if (zombies[i] != null) {
                 zombies[i].render(g);

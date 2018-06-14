@@ -14,6 +14,7 @@ public class Zombie extends Creature {
     private static Player player;
 
     private Animation up, down, left, right;
+    private boolean chUp, chDown, chLeft, chRight;
 
     public Zombie(Handler handler, Player player, float x, float y) {
         super(handler, x, y, Creature.DEF_WIDTH, Creature.DEF_HEIGHT);
@@ -29,6 +30,10 @@ public class Zombie extends Creature {
 
     @Override
     public void update() {
+        up.update();
+        down.update();
+        left.update();
+        right.update();
         getInput();
     }
 
@@ -36,16 +41,20 @@ public class Zombie extends Creature {
         if (inRange((int)player.getY(), (int)y) <= Tile.WIDTH * 5 && inRange((int)player.getX(), (int)x) <= Tile.WIDTH * 5) {
             if (player.getY() < y + 18) {
                 y -= speed;
-            }
+                chUp = true;
+            } else {chUp = false;}
             if (player.getY() > y - 18) {
                 y += speed;
-            }
+                chDown = true;
+            } else {chDown = false;}
             if (player.getX() < x + 18) {
                 x -= speed;
-            }
+                chLeft = true;
+            } else {chLeft = false;}
             if (player.getX() > x - 18) {
                 x += speed;
-            }
+                chRight = true;
+            } else {chRight = false;}
         }
     }
 
@@ -55,13 +64,13 @@ public class Zombie extends Creature {
     }
 
     private BufferedImage currentAnimation() {
-        if (player.getX() <= x) {
+        if (chLeft) {
             return left.currentFrame();
-        } else if (player.getX() > x) {
+        } else if (chRight) {
             return right.currentFrame();
-        } else if (player.getY() < y) {
+        } else if (chUp) {
             return up.currentFrame();
-        } else if (player.getY() > y) {
+        } else if (chDown) {
             return down.currentFrame();
         } else {
             return Assets.zombie;
