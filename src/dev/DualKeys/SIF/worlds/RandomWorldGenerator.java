@@ -20,7 +20,6 @@ public class RandomWorldGenerator {
                 worldTemp = this.combineChunks(worldTemp, tokens);
             }
         }
-
         return worldTemp;
     }
 

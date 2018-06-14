@@ -7,11 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43c8c76a-faeb-4fcb-868e-a32ba8fcfa71" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/SIF_jar/SIF.jar" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/SIF_jar/SIF.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/DualKeys/SIF/states/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/DualKeys/SIF/states/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/RandomWorldChunkGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/RandomWorldChunkGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/RandomWorldGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/RandomWorldGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/World.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/states/GameState.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="25" column="94" selection-start-line="25" selection-start-column="94" selection-end-line="25" selection-end-column="94" />
+              <caret line="25" column="93" selection-start-line="25" selection-start-column="93" selection-end-line="25" selection-end-column="93" />
             </state>
           </provider>
         </entry>
@@ -53,7 +51,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameCamera.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameCamera.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/graphics/GameCamera.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="414">
@@ -62,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RandomWorldGenerator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RandomWorldGenerator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/RandomWorldGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="706">
-              <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+            <state relative-caret-position="550">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
             </state>
           </provider>
         </entry>
@@ -141,12 +139,12 @@
         <option value="$PROJECT_DIR$/res/Worlds/test.world" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/UI/GUI.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/Saving/Load.java" />
-        <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/RandomWorldGenerator.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/RandomWorldChunkGenerator.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/Saving/Save.java" />
-        <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/states/GameState.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/World.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/graphics/GameCamera.java" />
+        <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/states/GameState.java" />
+        <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/RandomWorldGenerator.java" />
       </list>
     </option>
   </component>
@@ -389,11 +387,11 @@
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="2" />
       <window_info anchor="bottom" id="Version Control" order="2" />
-      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.13071896" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.1328976" />
       <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.203125" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.13177083" />
+      <window_info content_ui="combo" id="Project" order="4" visible="true" weight="0.13177083" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.15577342" />
       <window_info id="Learn" order="1" />
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
@@ -789,13 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/RandomWorldGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="706">
-          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/Worlds/lake.world">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -803,10 +794,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/graphics/GameCamera.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/states/GameState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="25" column="94" selection-start-line="25" selection-start-column="94" selection-end-line="25" selection-end-column="94" />
+          <caret line="25" column="93" selection-start-line="25" selection-start-column="93" selection-end-line="25" selection-end-column="93" />
         </state>
       </provider>
     </entry>
@@ -821,10 +819,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/graphics/GameCamera.java">
+    <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/RandomWorldGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+        <state relative-caret-position="550">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
