@@ -59,4 +59,8 @@ public class Handler {
         return StateManager.getState();
     }
 
+    public int getFPS() {
+        return game.getFPS();
+    }
+
 }

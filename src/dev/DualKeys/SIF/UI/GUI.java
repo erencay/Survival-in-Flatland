@@ -17,10 +17,10 @@ public class GUI {
     private Font hFont;
     
     private int speed, hSpeed;
-    private int health, hunger;
+    private int health, hunger, fps;
     private long time;
     private int days;
-    private long lastTime, timer, hTimer;
+    private long lastTime, timer, hTimer, dTimer;
     
     public GUI(Handler handler, Player player) {
         this.player = player;
@@ -30,13 +30,14 @@ public class GUI {
         hSpeed = 5000;
         timer = 0;
         hTimer = 0;
+        dTimer = 0;
         lastTime = System.currentTimeMillis();
     }
     
     public void update() {
         health = player.getHealth();
         hunger = player.getHunger();
-        
+
         timer += System.currentTimeMillis() - lastTime;
         hTimer += System.currentTimeMillis() - lastTime;
         lastTime = System.currentTimeMillis();
@@ -44,6 +45,7 @@ public class GUI {
         if (handler.getState() == handler.getGameState()) {
             if (timer > speed) {
                 timer = 0;
+                fps = handler.getFPS();
                 if (health < MAX_HEALTH && hunger >= 85) {
                     health++;
                 }
@@ -65,6 +67,8 @@ public class GUI {
     }
 
     public void render(Graphics g, long time, int days) {
+        dTimer += System.currentTimeMillis() - lastTime;
+        lastTime = System.currentTimeMillis();
         this.time = time / 1000;
         this.days = days;
         // Background of GUI
@@ -87,13 +91,16 @@ public class GUI {
         // Font
 	    g.setColor(Color.black);
 	    g.setFont(hFont);
-        int w = g.getFontMetrics().stringWidth(health + " / 100");
-        int wh = g.getFontMetrics().stringWidth(hunger + " / 100");
-        int wt = g.getFontMetrics().stringWidth("Days: " + days + " Time: " + time);
-	    g.drawString(health + " / 100", 6 + (100 - w / 2), handler.getHeight() - 10);
-	    g.drawString(hunger + " / 100", handler.getWidth() - 6 - (100 + wh / 2), handler.getHeight() - 10);
-	    g.drawString("Day: " + days + " Time: " + time, handler.getWidth() / 2 - wt / 2, handler.getHeight() - 10);
-	    g.drawString("test", 0, 0);
+	    if (dTimer > speed) {
+	        timer = 0;
+	        time /= 1000;
+            int w = g.getFontMetrics().stringWidth(health + " / 100");
+            int wh = g.getFontMetrics().stringWidth(hunger + " / 100");
+            int wt = g.getFontMetrics().stringWidth("Days: " + days + " Time: " + time);
+            g.drawString(health + " / 100", 6 + (100 - w / 2), handler.getHeight() - 10);
+            g.drawString(hunger + " / 100", handler.getWidth() - 6 - (100 + wh / 2), handler.getHeight() - 10);
+            g.drawString("Day: " + days + " Time: " + time, 0, 15);
+            g.drawString("FPS: " + fps, 0, 30);
+        }
     }
-    
 }

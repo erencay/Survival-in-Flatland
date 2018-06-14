@@ -38,10 +38,8 @@ public class World {
         int yStart = (int)Math.max(0.0F, this.handler.getGameCamera().getyOffset() / Tile.HEIGHT);
         int yEnd = (int)Math.min(this.height, (this.handler.getGameCamera().getyOffset() + this.handler.getHeight()) / Tile.WIDTH + 1.0F);
 
-        System.out.println(xStart + ":" + xEnd + ":" + yStart + ":" + yEnd);
         for(int y = yStart; y < yEnd; y++) {
             for(int x = xStart; x < xEnd; x++) {
-                //System.out.println("x: " + x + " y: " + y);
                 this.getTile(x, y).render(g, (int)((x * Tile.WIDTH) - this.handler.getGameCamera().getxOffset()), (int)((y * Tile.HEIGHT) - this.handler.getGameCamera().getyOffset()));
             }
         }
