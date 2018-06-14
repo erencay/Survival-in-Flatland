@@ -1,6 +1,5 @@
 package dev.DualKeys.SIF.worlds;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class RandomWorldGenerator {
@@ -24,13 +23,9 @@ public class RandomWorldGenerator {
     }
 
     private int[][] combineChunks(int[][] chunk1, int[][] chunk2) {
-        int[][] temp = new int[chunk1.length][chunk1.length * 2];
-
-        for (int i = 0; i < chunk1.length; i++) {
-            temp[i] = Arrays.copyOf(chunk1[i], chunk1[i].length + chunk2[i].length);
-            System.arraycopy(chunk2[i], 0, temp[i], chunk1[i].length, chunk2[i].length);
-        }
+        int[][] temp = new int[chunk1.length + chunk2.length][];
+        System.arraycopy(chunk1, 0, temp, 0, chunk1.length);
+        System.arraycopy(chunk2, 0, temp, chunk1.length, chunk1.length + chunk2.length - chunk1.length);
         return temp;
     }
-
 }
