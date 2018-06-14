@@ -23,6 +23,7 @@ public class GameState extends State {
     public GameState(Handler handler) {
         super(handler);
         Assets.init();
+
         world = new World(handler, getClass().getResourceAsStream("/Worlds/world1.world"), true);
         handler.setWorld(world);
         player = new Player(handler, 32, 32);
