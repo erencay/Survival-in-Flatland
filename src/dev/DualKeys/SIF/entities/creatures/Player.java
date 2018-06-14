@@ -36,11 +36,11 @@ public class Player extends Creature {
         left.update();
         right.update();
         if (handler.getKeyManager().run && swimming) {
-            setSpeed(4);
+            setSpeed(2);
         } else if (swimming) {
             setSpeed(1);
         } else if (handler.getKeyManager().run) {
-            setSpeed(2);
+            setSpeed(4);
         } else {
             setSpeed(3);
         }
