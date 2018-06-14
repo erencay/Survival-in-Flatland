@@ -33,14 +33,14 @@ public class World {
     }
 
     public void render(Graphics g) {
-        int xStart = (int)Math.max(0.0F, this.handler.getGameCamera().getxOffset() / 32.0F);
-        int xEnd = (int)Math.min((float)this.width, (this.handler.getGameCamera().getxOffset() + (float)this.handler.getWidth()) / 32.0F + 1.0F);
-        int yStart = (int)Math.max(0.0F, this.handler.getGameCamera().getyOffset() / 32.0F);
-        int yEnd = (int)Math.min((float)this.height, (this.handler.getGameCamera().getyOffset() + (float)this.handler.getHeight()) / 32.0F);
+        int xStart = (int)Math.max(0.0F, this.handler.getGameCamera().getxOffset() / Tile.WIDTH);
+        int xEnd = (int)Math.min((float)this.width, (this.handler.getGameCamera().getxOffset() + (float)this.handler.getWidth()) / Tile.WIDTH + 1.0F);
+        int yStart = (int)Math.max(0.0F, this.handler.getGameCamera().getyOffset() / Tile.WIDTH);
+        int yEnd = (int)Math.min((float)this.height, (this.handler.getGameCamera().getyOffset() + (float)this.handler.getHeight()) / Tile.WIDTH);
 
-        for(int y = yStart; y < yEnd; ++y) {
-            for(int x = xStart; x < xEnd; ++x) {
-                this.getTile(x, y).render(g, (int)((float)(x * 32) - this.handler.getGameCamera().getxOffset()), (int)((float)(y * 32) - this.handler.getGameCamera().getyOffset()));
+        for(int y = yStart; y < yEnd; y++) {
+            for(int x = xStart; x < xEnd; x++) {
+                this.getTile(x, y).render(g, (int)((x * Tile.WIDTH) - this.handler.getGameCamera().getxOffset()), (int)((y * Tile.WIDTH) - this.handler.getGameCamera().getyOffset()));
             }
         }
 
