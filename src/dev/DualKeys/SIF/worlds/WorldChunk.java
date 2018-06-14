@@ -8,9 +8,9 @@ import java.util.Arrays;
 public class WorldChunk {
     private final int[][] tokens;
     private final int chunkSize;
-    private final int chunkSeed;
+    private final long chunkSeed;
 
-    public WorldChunk(int[][] tokens, int chunkSize, int chunkSeed) {
+    public WorldChunk(int[][] tokens, int chunkSize, long chunkSeed) {
         this.tokens = tokens;
         this.chunkSize = chunkSize;
         this.chunkSeed = chunkSeed;

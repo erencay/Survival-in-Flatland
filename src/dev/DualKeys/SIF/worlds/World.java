@@ -4,13 +4,16 @@ import dev.DualKeys.SIF.Handler;
 import dev.DualKeys.SIF.tiles.Tile;
 import dev.DualKeys.SIF.tiles.TileMap;
 import dev.DualKeys.SIF.utils.Utils;
-import java.awt.Graphics;
+
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class World {
     private Handler handler;
@@ -49,60 +52,36 @@ public class World {
 
     private void loadWorld(InputStream path, boolean isRandom) {
         if (!isRandom) {
-            try {
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(path));
-                Throwable var4 = null;
+            try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(path))) {
+                String[] size = bufferedReader.readLine().split("\\s+");
+                this.width = Utils.parseInt(size[0]);
+                this.height = Utils.parseInt(size[1]);
 
-                try {
-                    String[] size = bufferedReader.readLine().split("\\s+");
-                    this.width = Utils.parseInt(size[0]);
-                    this.height = Utils.parseInt(size[1]);
-                    ArrayList tokens = new ArrayList();
+                List<String> tokens = new ArrayList<>();
 
-                    String line;
-                    try {
-                        while((line = bufferedReader.readLine()) != null) {
-                            tokens.addAll(Arrays.asList(line.split("\\s+")));
-                        }
-                    } catch (IOException var18) {
-                        var18.printStackTrace();
-                    }
-
-                    this.tiles = new int[this.width][this.height];
-
-                    for(int y = 0; y < this.height; ++y) {
-                        for(int x = 0; x < this.width; ++x) {
-                            this.tiles[x][y] = Utils.parseInt((String)tokens.get(x + y * this.width));
-                        }
-                    }
-                } catch (Throwable var19) {
-                    var4 = var19;
-                    throw var19;
-                } finally {
-                    if (bufferedReader != null) {
-                        if (var4 != null) {
-                            try {
-                                bufferedReader.close();
-                            } catch (Throwable var17) {
-                                var4.addSuppressed(var17);
-                            }
-                        } else {
-                            bufferedReader.close();
-                        }
-                    }
-
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    tokens.addAll(Arrays.asList(line.split("\\s+")));
                 }
-            } catch (IOException var21) {
-                var21.printStackTrace();
+
+                this.tiles = new int[this.width][this.height];
+
+                for (int y = 0; y < this.height; ++y) {
+                    for (int x = 0; x < this.width; ++x) {
+                        this.tiles[x][y] = Utils.parseInt(tokens.get(x + y * this.width));
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         } else {
+            Random random = new Random();
             RandomWorldGenerator randomWorldGenerator = new RandomWorldGenerator();
-            int[][] tokens1 = randomWorldGenerator.generateWorld(4, 25, -957976999);
+            int[][] tokens1 = randomWorldGenerator.generateWorld(4, 25, random.nextLong());
             this.tileMap = new TileMap(tokens1);
             this.width = this.tileMap.getSize();
             this.height = this.tileMap.getSize();
         }
-
     }
 
     public int getSpawnX() {

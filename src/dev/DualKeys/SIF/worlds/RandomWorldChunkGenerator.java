@@ -7,9 +7,9 @@ import java.util.Random;
  */
 public class RandomWorldChunkGenerator {
     // frequency of dirts
-    private static final int DIRT_FREQUENCY = 25;
+    private static final int DIRT_FREQUENCY = 15;
     // frequency of rivers
-    private static final int RIVER_FREQUENCY = 50;
+    private static final int RIVER_FREQUENCY = 100;
     private static RandomWorldChunkGenerator randomWorldChunkGenerator;
 
     private RandomWorldChunkGenerator() {
@@ -19,7 +19,7 @@ public class RandomWorldChunkGenerator {
         return randomWorldChunkGenerator == null ? new RandomWorldChunkGenerator() : randomWorldChunkGenerator;
     }
 
-    public WorldChunk generate(int chunkSize, int chunkSeed) {
+    public WorldChunk generate(int chunkSize, long chunkSeed) {
         int[][] tokens = new int[chunkSize][chunkSize];
         tokens = this.generateDirtLayer(tokens, chunkSeed);
         tokens = this.generateRiverLayer(tokens, chunkSeed);
@@ -33,10 +33,10 @@ public class RandomWorldChunkGenerator {
      * @param chunkSeed
      * @return
      */
-    private int[][] generateDirtLayer(int[][] tokens, int chunkSeed) {
-        Random random = new Random((long)chunkSeed);
+    private int[][] generateDirtLayer(int[][] tokens, long chunkSeed) {
+        Random random = new Random(chunkSeed);
 
-        for(int i = 0; i <= DIRT_FREQUENCY; ++i) {
+        for(int i = 0; i <= DIRT_FREQUENCY; i++) {
             int x = random.nextInt(tokens.length);
             int y = random.nextInt(tokens.length);
             if (tokens[x][y] == 0) {
@@ -44,62 +44,45 @@ public class RandomWorldChunkGenerator {
                 int direction = random.nextInt(8);
                 if (direction == RandomWorldChunkGenerator.Direction.TOP.getValue()) {
                     if (x - 1 >= 0) {
-                        --x;
-                        tokens[x][y] = 1;
+                        tokens[--x][y] = 1;
                         System.out.println("top");
                     }
                 } else {
-                    int[] var10000;
                     if (direction == RandomWorldChunkGenerator.Direction.LEFT.getValue()) {
                         if (y - 1 >= 0) {
-                            var10000 = tokens[x];
-                            --y;
-                            var10000[y] = 1;
+                            tokens[x][--y] = 1;
                             System.out.println("left");
                         }
                     } else if (direction == RandomWorldChunkGenerator.Direction.BOTTOM.getValue()) {
                         if (x + 1 < tokens.length) {
-                            ++x;
-                            tokens[x][y] = 1;
+                            tokens[++x][y] = 1;
                             System.out.println("bottom");
                         }
                     } else if (direction == RandomWorldChunkGenerator.Direction.RIGHT.getValue()) {
                         if (y + 1 < tokens.length) {
-                            var10000 = tokens[x];
-                            ++y;
-                            var10000[y] = 1;
+                            tokens[x][++y] = 1;
                             System.out.println("right");
                         }
                     } else if (direction == RandomWorldChunkGenerator.Direction.TOP_LEFT.getValue()) {
                         if (x - 1 >= 0 && y - 1 >= 0) {
-                            --x;
-                            var10000 = tokens[x];
-                            --y;
-                            var10000[y] = 1;
+                            tokens[--x][--y] = 1;
                             System.out.println("top left");
                         }
                     } else if (direction == RandomWorldChunkGenerator.Direction.TOP_RIGHT.getValue()) {
                         if (x - 1 >= 0 && y + 1 < tokens.length) {
-                            --x;
-                            var10000 = tokens[x];
-                            ++y;
-                            var10000[y] = 1;
+                            tokens[--x][++y] = 1;
                             System.out.println("top right");
                         }
                     } else if (direction == RandomWorldChunkGenerator.Direction.BOTTOM_LEFT.getValue()) {
                         if (x + 1 < tokens.length && y - 1 >= 0) {
-                            ++x;
-                            var10000 = tokens[x];
-                            --y;
-                            var10000[y] = 1;
+                            tokens[++x][--y] = 1;
                             System.out.println("bottom left");
                         }
-                    } else if (direction == RandomWorldChunkGenerator.Direction.BOTTOM_RIGHT.getValue() && x + 1 < tokens.length && y + 1 < tokens.length) {
-                        ++x;
-                        var10000 = tokens[x];
-                        ++y;
-                        var10000[y] = 1;
-                        System.out.println("bottom right");
+                    } else if (direction == RandomWorldChunkGenerator.Direction.BOTTOM_RIGHT.getValue()) {
+                        if (x + 1 < tokens.length && y + 1 < tokens.length) {
+                            tokens[++x][++y] = 1;
+                            System.out.println("bottom right");
+                        }
                     }
                 }
             }
@@ -114,63 +97,51 @@ public class RandomWorldChunkGenerator {
      * @param chunkSeed
      * @return
      */
-    private int[][] generateRiverLayer(int[][] tokens, int chunkSeed) {
-        Random random = new Random((long)chunkSeed);
+    private int[][] generateRiverLayer(int[][] tokens, long chunkSeed) {
+        Random random = new Random(chunkSeed);
         int row = random.nextInt(tokens.length);
         int col = random.nextInt(tokens.length);
         tokens[row][col] = 2;
 
-        for(int i = 0; i <= RIVER_FREQUENCY; ++i) {
+        for(int i = 0; i <= RIVER_FREQUENCY; i++) {
             int direction = random.nextInt(8);
             if (direction == RandomWorldChunkGenerator.Direction.TOP.getValue()) {
                 if (row - 1 >= 0) {
-                    tokens[row - 1][col] = 2;
-                    --row;
+                    tokens[--row][col] = 2;
                     System.out.println("top");
                 }
             } else if (direction == RandomWorldChunkGenerator.Direction.LEFT.getValue()) {
                 if (col - 1 >= 0) {
-                    tokens[row][col - 1] = 2;
-                    --col;
+                    tokens[row][--col] = 2;
                     System.out.println("left");
                 }
             } else if (direction == RandomWorldChunkGenerator.Direction.BOTTOM.getValue()) {
                 if (row + 1 < tokens.length) {
-                    tokens[row + 1][col] = 2;
-                    ++row;
+                    tokens[++row][col] = 2;
                     System.out.println("bottom");
                 }
             } else if (direction == RandomWorldChunkGenerator.Direction.RIGHT.getValue()) {
                 if (col + 1 < tokens.length) {
-                    tokens[row][col + 1] = 2;
-                    ++col;
+                    tokens[row][++col] = 2;
                     System.out.println("right");
                 }
             } else if (direction == RandomWorldChunkGenerator.Direction.TOP_LEFT.getValue()) {
                 if (row - 1 >= 0 && col - 1 >= 0) {
-                    tokens[row - 1][col - 1] = 2;
-                    --row;
-                    --col;
+                    tokens[--row][--col] = 2;
                     System.out.println("top left");
                 }
             } else if (direction == RandomWorldChunkGenerator.Direction.TOP_RIGHT.getValue()) {
                 if (row - 1 >= 0 && col + 1 < tokens.length) {
-                    tokens[row - 1][col + 1] = 2;
-                    --row;
-                    ++col;
+                    tokens[--row][++col] = 2;
                     System.out.println("top right");
                 }
             } else if (direction == RandomWorldChunkGenerator.Direction.BOTTOM_LEFT.getValue()) {
                 if (row + 1 < tokens.length && col - 1 >= 0) {
-                    tokens[row + 1][col - 1] = 2;
-                    ++row;
-                    --col;
+                    tokens[++row][--col] = 2;
                     System.out.println("bottom left");
                 }
             } else if (direction == RandomWorldChunkGenerator.Direction.BOTTOM_RIGHT.getValue() && row + 1 < tokens.length && col + 1 < tokens.length) {
-                tokens[row + 1][col + 1] = 2;
-                ++row;
-                ++col;
+                tokens[++row][++col] = 2;
                 System.out.println("bottom right");
             }
         }
@@ -189,8 +160,8 @@ public class RandomWorldChunkGenerator {
     private int[][] shift(int[][] tokens, int shiftValue, RandomWorldChunkGenerator.Direction direction) {
         int[][] temp = new int[tokens.length][tokens.length];
 
-        for(int i = 0; i < tokens.length; ++i) {
-            for(int j = 0; j < tokens[i].length; ++j) {
+        for(int i = 0; i < tokens.length; i++) {
+            for(int j = 0; j < tokens[i].length; j++) {
                 if (tokens[i][j] != 0) {
                     if (direction == RandomWorldChunkGenerator.Direction.TOP) {
                         if (i - shiftValue >= 0) {

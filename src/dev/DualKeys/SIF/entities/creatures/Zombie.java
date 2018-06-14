@@ -10,8 +10,8 @@ import java.awt.image.BufferedImage;
 
 public class Zombie extends Creature {
 
-    private static Handler handler;
-    private static Player player;
+    private Handler handler;
+    private Player player;
 
     private Animation up, down, left, right;
     private boolean chUp, chDown, chLeft, chRight;
@@ -37,7 +37,7 @@ public class Zombie extends Creature {
         getInput();
     }
 
-    public void getInput() {
+    private void getInput() {
         if (inRange((int)player.getY(), (int)y) <= Tile.WIDTH * 5 && inRange((int)player.getX(), (int)x) <= Tile.WIDTH * 5) {
             if (player.getY() < y + 18) {
                 y -= speed;
