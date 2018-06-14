@@ -23,8 +23,8 @@ public class GameCamera {
         }
         if (yOffset < 0) {
             yOffset = 0;
-        } else if (yOffset > handler.getWorld().getHeight() * Tile.HEIGHT - (handler.getHeight() - 32)) {
-            yOffset = handler.getWorld().getHeight() * Tile.HEIGHT - (handler.getHeight() - 32);
+        } else if (yOffset > handler.getWorld().getHeight() * Tile.HEIGHT - (handler.getHeight() - 64)) {
+            yOffset = handler.getWorld().getHeight() * Tile.HEIGHT - (handler.getHeight() - 64);
         }
     }
 

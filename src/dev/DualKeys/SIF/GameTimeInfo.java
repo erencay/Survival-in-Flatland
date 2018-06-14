@@ -5,7 +5,6 @@ public class GameTimeInfo {
     public short Hour;
     public short Minute;
     public boolean IsPaused;
-    GameTimeInfo oldest, GameTimeInfo;
     private short sunDown;
     private short sunUp;
 
@@ -23,8 +22,8 @@ public class GameTimeInfo {
         this.sunUp = sunUp;
     }
 
-        public boolean isNightTime() {
-        return Hour >= sunDown && Hour < sunUp;
+    public boolean isNightTime() {
+        return Hour >= sunDown || Hour < sunUp;
     }
 
     public boolean isDayTime() {

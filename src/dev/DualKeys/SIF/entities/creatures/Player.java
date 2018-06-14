@@ -12,7 +12,7 @@ public class Player extends Creature {
 
     private Handler handler;
     private Animation up, down, left, right;
-    private boolean swimming;
+    private boolean swimming, running;
 
     public Player(Handler handler, int x, int y) {
         super(handler, x, y, Creature.DEF_WIDTH, Creature.DEF_HEIGHT);
@@ -37,12 +37,16 @@ public class Player extends Creature {
         right.update();
         if (handler.getKeyManager().run && swimming) {
             setSpeed(2);
+            running = true;
         } else if (swimming) {
             setSpeed(1);
+            running = false;
         } else if (handler.getKeyManager().run) {
             setSpeed(4);
+            running = true;
         } else {
             setSpeed(3);
+            running = false;
         }
         getInput();
         move();

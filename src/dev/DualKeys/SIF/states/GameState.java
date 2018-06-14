@@ -28,11 +28,11 @@ public class GameState extends State {
         this.gameTimeManager = gameTimeManager;
         Assets.init();
 
-        world = new World(handler, getClass().getResourceAsStream("/Worlds/lake.world"), false);
+        world = new World(handler, getClass().getResourceAsStream("/Worlds/world.world"), false);
         handler.setWorld(world);
         player = new Player(handler, 32, 32);
         gui = new GUI(handler, player, gameTimeManager);
-        zombies = new Zombie[7];
+        zombies = new Zombie[11];
     }
 
     @Override
@@ -48,9 +48,9 @@ public class GameState extends State {
                 zombies[i].update();
             }
         }
-        if (zombies[6] != null) {
-            zombies[0] = zombies[6]; // zom6 zom1 zom2 zom3 zom4 zom5 null
-            zombies[6] = null;
+        if (zombies[10] != null) {
+            zombies[0] = zombies[10]; // zom6 zom1 zom2 zom3 zom4 zom5 null
+            zombies[10] = null;
         }
         if (currentTime.isNightTime()) {
             if (lastZombieSpawn == null || currentTime.elapsedMinutes() - lastZombieSpawn.elapsedMinutes() >= 60) {
