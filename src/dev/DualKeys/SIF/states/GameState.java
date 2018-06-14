@@ -28,7 +28,7 @@ public class GameState extends State {
         this.gameTimeManager = gameTimeManager;
         Assets.init();
 
-        world = new World(handler, getClass().getResourceAsStream("/Worlds/world.world"), false);
+        world = new World(handler, getClass().getResourceAsStream("/Worlds/test.world"), false);
         handler.setWorld(world);
         player = new Player(handler, 32, 32);
         gui = new GUI(handler, player, gameTimeManager);

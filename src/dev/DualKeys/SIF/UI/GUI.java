@@ -12,7 +12,7 @@ public class GUI {
 
     private final int MAX_HEALTH = 100;
     private final int MAX_HUNGER = 100;
-    private final int MAX_STAMINA = 50;
+    private final int MAX_STAMINA = 100;
     private final int MAX_THIRST = 100;
     
     private Player player;
@@ -22,7 +22,8 @@ public class GUI {
     private Font hFont;
     
     private int speed, hSpeed, sSpeed;
-    private int health, hunger, thirst, stamina;
+    private int health, hunger, thirst;
+    private double stamina;
     private GameTimeInfo time;
     private int days;
     private long lastTime, timer, hTimer, dTimer, sTimer;
@@ -32,6 +33,7 @@ public class GUI {
         this.player = player;
         this.handler = handler;
         hFont = new Font("Helvetica", Font.BOLD, 16);
+        player.setStamina(35);
         speed = 1000;
         sSpeed = 500;
         hSpeed = 5000;
@@ -56,9 +58,6 @@ public class GUI {
         if (handler.getState() == handler.getGameState()) {
             if (timer > speed) {
                 timer = 0;
-                if (stamina < MAX_STAMINA && !player.running) {
-                    stamina++;
-                }
                 if (health < MAX_HEALTH && hunger >= 85) {
                     health++;
                 }
@@ -74,18 +73,29 @@ public class GUI {
                 if (thirst > 0) {
                     thirst--;
                 } else if (thirst == 0) {
-                    thirst--;
+                    health--;
                 }
-            } else if (hunger > 100) {
-                hunger = 100;
-            } else if (thirst > 100) {
-                thirst = 100;
+            } else if (hunger > MAX_HUNGER) {
+                hunger = MAX_HUNGER;
+            } else if (thirst > MAX_THIRST) {
+                thirst = MAX_THIRST;
             }
 
             if (sTimer > sSpeed) {
-                if (player.running) {
-                    stamina--;
+                sTimer = 0;
+                if (stamina < MAX_STAMINA && hunger >= 50 && !player.running) {
+                    stamina++;
                 }
+            } else if (stamina < 0) {
+                stamina = 0;
+            } else if (stamina > MAX_STAMINA) {
+                stamina = MAX_STAMINA;
+            } else if (player.running && stamina < MAX_STAMINA) {
+                stamina -= 0.25;
+            } else if (player.running && stamina <= 20) {
+                player.running = false;
+            } else if (player.running) {
+                stamina -= 0.25;
             }
         }
         player.setHealth(health);
@@ -126,7 +136,7 @@ public class GUI {
 
         // Stamina
         g.setColor(Color.blue);
-        g.fillRect(6, handler.getHeight() - (26 * 2), stamina * 4, 20);
+        g.fillRect(6, handler.getHeight() - (26 * 2), (int)stamina * 2, 20);
         g.setColor(Color.black);
         g.drawRect(6, handler.getHeight() - (26 * 2), 200, 20);
 
@@ -137,7 +147,9 @@ public class GUI {
 	        timer = 0;
             int w = g.getFontMetrics().stringWidth(health + " / 100");
             int wh = g.getFontMetrics().stringWidth(hunger + " / 100");
+            int ws = g.getFontMetrics().stringWidth(stamina + " / 100");
             g.drawString(health + " / 100", 6 + (100 - w / 2), handler.getHeight() - 10);
+            g.drawString(stamina + " / 100", 6 + (100 - ws / 2), handler.getHeight() - 35);
             g.drawString(hunger + " / 100", handler.getWidth() - 6 - (100 + wh / 2), handler.getHeight() - 10);
             g.drawString("Day: " + days + " Time: " + time.Hour + ":" + time.Minute, 0, 15);
         }

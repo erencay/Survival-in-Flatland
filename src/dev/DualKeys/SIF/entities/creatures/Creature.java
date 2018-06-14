@@ -9,13 +9,14 @@ public abstract class Creature extends Entity {
     public static final int DEF_HEALTH = 100;
     public static final int DEF_HUNGER = 100;
     public static final int DEF_THIRST = 100;
-    public static final int DEF_STAMINA = 50;
+    public static final int DEF_STAMINA = 100;
     public static final float DEF_SPEED = 3.0f;
     public static final int DEF_WIDTH = 32,
                             DEF_HEIGHT = 32;
 
     protected Handler handler;
-    protected int health, hunger, stamina, thirst;
+    protected int health, hunger, thirst;
+    protected double stamina;
     protected float speed;
     protected float xMove, yMove;
 
@@ -37,13 +38,16 @@ public abstract class Creature extends Entity {
     }
 
     public void moveX() {
-        if (xMove > 0) {  // left
-            int tx = (int)(x + xMove + bounds.x + bounds.width) / Tile.WIDTH;
-            if (!collision(tx, (int)(y + bounds.y) / Tile.HEIGHT) && !collision(tx, (int) (y + bounds.y + bounds.height) / Tile.HEIGHT)) {
+        if(xMove > 0){//Moving right
+            int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.WIDTH;
+
+            if(!collision(tx, (int) (y + bounds.y) / Tile.HEIGHT) &&
+                    !collision(tx, (int) (y + bounds.y + bounds.height) / Tile.HEIGHT)){
                 x += xMove;
             }
-        } else if (xMove < 0) {  // right
+        }else if(xMove < 0){//Moving left
             int tx = (int) (x + xMove + bounds.x) / Tile.WIDTH;
+
             if(!collision(tx, (int) (y + bounds.y) / Tile.HEIGHT) &&
                     !collision(tx, (int) (y + bounds.y + bounds.height) / Tile.HEIGHT)){
                 x += xMove;
@@ -54,15 +58,14 @@ public abstract class Creature extends Entity {
     public void moveY() {
         if(yMove < 0){//Up
             int ty = (int) (y + yMove + bounds.y) / Tile.HEIGHT;
-            if(!collision((int) (x + bounds.x) / Tile.WIDTH, ty) &&
-                    !collision((int) (x + bounds.x + bounds.width) / Tile.WIDTH, ty)){
+
+            if(!collision((int) (x + bounds.x) / Tile.WIDTH, ty) && !collision((int) (x + bounds.x + bounds.width) / Tile.WIDTH, ty)){
                 y += yMove;
             }
         }else if(yMove > 0){//Down
             int ty = (int) (y + yMove + bounds.y + bounds.height) / Tile.HEIGHT;
 
-            if(!collision((int) (x + bounds.x) / Tile.WIDTH, ty) &&
-                    !collision((int) (x + bounds.x + bounds.width) / Tile.WIDTH, ty)){
+            if(!collision((int) (x + bounds.x) / Tile.WIDTH, ty) && !collision((int) (x + bounds.x + bounds.width) / Tile.WIDTH, ty)){
                 y += yMove;
             }
         }
@@ -112,11 +115,11 @@ public abstract class Creature extends Entity {
         this.hunger = hunger;
     }
 
-    public int getStamina() {
+    public double getStamina() {
         return stamina;
     }
 
-    public void setStamina(int stamina) {
+    public void setStamina(double stamina) {
         this.stamina = stamina;
     }
 

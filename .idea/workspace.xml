@@ -7,9 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43c8c76a-faeb-4fcb-868e-a32ba8fcfa71" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/res/Worlds/test.world" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/DualKeys/SIF/UI/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/DualKeys/SIF/UI/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Creature.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Zombie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/DualKeys/SIF/states/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/DualKeys/SIF/states/GameState.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -33,11 +36,8 @@
       <file leaf-file-name="GameState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/states/GameState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-198">
+              <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -45,8 +45,8 @@
       <file leaf-file-name="Creature.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Creature.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="41" column="78" lean-forward="true" selection-start-line="41" selection-start-column="78" selection-end-line="41" selection-end-column="78" />
+            <state relative-caret-position="365">
+              <caret line="121" column="33" selection-start-line="121" selection-start-column="33" selection-end-line="121" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2419#2420#0" expanded="true" />
@@ -59,8 +59,8 @@
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="62" selection-start-line="62" selection-end-line="62" />
+            <state relative-caret-position="217">
+              <caret line="100" selection-start-line="100" selection-end-line="100" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,7 +71,7 @@
       <file leaf-file-name="World.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/World.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
+            <state relative-caret-position="217">
               <caret line="46" selection-start-line="46" selection-end-line="46" />
               <folding>
                 <element signature="e#1718#1719#0" expanded="true" />
@@ -83,20 +83,8 @@
       <file leaf-file-name="GUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/UI/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="88" column="13" lean-forward="true" selection-start-line="84" selection-start-column="12" selection-end-line="88" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Zombie.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Zombie.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="377">
+              <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -104,8 +92,20 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-224">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="374">
+              <caret line="49" column="31" lean-forward="true" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Zombie.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Zombie.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -127,7 +127,7 @@
       <file leaf-file-name="TileMap.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/tiles/TileMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="151">
               <caret line="20" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#1377#1378#0" expanded="true" />
@@ -137,6 +137,15 @@
                 <element signature="e#1497#1498#0" expanded="true" />
                 <element signature="e#1526#1527#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.world" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/Worlds/test.world">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="117" column="161" selection-start-line="117" selection-start-column="161" selection-end-line="117" selection-end-column="161" />
             </state>
           </provider>
         </entry>
@@ -155,7 +164,13 @@
       <find>player</find>
       <find>random</find>
       <find>getTile</find>
+      <find>TILEHEIGHT</find>
     </findStrings>
+    <replaceStrings>
+      <replace>collision</replace>
+      <replace>WIDTH</replace>
+      <replace>HEIGHT</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -170,21 +185,21 @@
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/graphics/Assets.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/Game.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/Handler.java" />
-        <option value="$PROJECT_DIR$/res/Worlds/test.world" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/Saving/Load.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/Saving/Save.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/Entity.java" />
-        <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Creature.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/tiles/River.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/tiles/Pond.java" />
-        <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Zombie.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/graphics/GameCamera.java" />
-        <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/tiles/TileMap.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/RandomWorldGenerator.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/RandomWorldChunkGenerator.java" />
-        <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/states/GameState.java" />
-        <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Player.java" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/World.java" />
+        <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/tiles/TileMap.java" />
+        <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Zombie.java" />
+        <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Player.java" />
+        <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/states/GameState.java" />
+        <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Creature.java" />
+        <option value="$PROJECT_DIR$/res/Worlds/test.world" />
         <option value="$PROJECT_DIR$/src/dev/DualKeys/SIF/UI/GUI.java" />
       </list>
     </option>
@@ -207,6 +222,17 @@
             <path>
               <item name="SIF" type="b2602c69:ProjectViewProjectNode" />
               <item name="SIF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SIF" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SIF" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SIF" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SIF" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="Worlds" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SIF" type="b2602c69:ProjectViewProjectNode" />
@@ -417,7 +443,7 @@
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="2" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.16993465" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.23856209" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info id="Designer" order="3" />
@@ -458,7 +484,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="44" />
+      <option name="time" value="45" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -693,7 +719,6 @@
     <entry file="file://$PROJECT_DIR$/res/Worlds/world.world">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/Worlds/test.world" />
     <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/Saving/Load.java" />
     <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/Saving/Save.java" />
     <entry file="file://$PROJECT_DIR$/res/Worlds/lake.world">
@@ -766,54 +791,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Zombie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-224">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/RandomWorldGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Creature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="41" column="78" lean-forward="true" selection-start-line="41" selection-start-column="78" selection-end-line="41" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2419#2420#0" expanded="true" />
-            <element signature="e#2484#2485#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/tiles/TileMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#1377#1378#0" expanded="true" />
-            <element signature="e#1410#1411#0" expanded="true" />
-            <element signature="e#1439#1440#0" expanded="true" />
-            <element signature="e#1467#1468#0" expanded="true" />
-            <element signature="e#1497#1498#0" expanded="true" />
-            <element signature="e#1526#1527#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -829,19 +810,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/states/GameState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/worlds/World.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
+        <state relative-caret-position="217">
           <caret line="46" selection-start-line="46" selection-end-line="46" />
           <folding>
             <element signature="e#1718#1719#0" expanded="true" />
@@ -851,18 +822,76 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        <state relative-caret-position="217">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/tiles/TileMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#1377#1378#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1439#1440#0" expanded="true" />
+            <element signature="e#1467#1468#0" expanded="true" />
+            <element signature="e#1497#1498#0" expanded="true" />
+            <element signature="e#1526#1527#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="49" column="31" lean-forward="true" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Zombie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/entities/creatures/Creature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="121" column="33" selection-start-line="121" selection-start-column="33" selection-end-line="121" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2419#2420#0" expanded="true" />
+            <element signature="e#2484#2485#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/states/GameState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-198">
+          <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/Worlds/test.world">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="117" column="161" selection-start-line="117" selection-start-column="161" selection-end-line="117" selection-end-column="161" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/dev/DualKeys/SIF/UI/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="88" column="13" lean-forward="true" selection-start-line="84" selection-start-column="12" selection-end-line="88" selection-end-column="13" />
+        <state relative-caret-position="377">
+          <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
         </state>
       </provider>
     </entry>

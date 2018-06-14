@@ -22,6 +22,7 @@ public class Zombie extends Creature {
         this.handler = handler;
         this.setSpeed(2.5f);
 
+
         down = new Animation(500, Assets.zombieDown);
         up = new Animation(500, Assets.zombieUp);
         left = new Animation(500, Assets.zombieLeft);
@@ -62,7 +63,7 @@ public class Zombie extends Creature {
     public void render(Graphics g) {
         g.drawImage(currentAnimation(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), null);
         if (handler.getWorld().getTile((int)x / Tile.WIDTH, (int)y / Tile.HEIGHT).getId() == 4 ||
-                handler.getWorld().getTile((int)x / Tile.WIDTH, (int)y / Tile.HEIGHT).getId() == 2) {
+            handler.getWorld().getTile((int)x / Tile.WIDTH, (int)y / Tile.HEIGHT).getId() == 2) {
             setSpeed(0.5F);
         } else {
             setSpeed(2);

@@ -14,9 +14,6 @@ public class Player extends Creature {
     private Animation up, down, left, right;
     public boolean swimming, running;
 
-    private int speed;
-    private long lastTime, timer;
-
     public Player(Handler handler, int x, int y) {
         super(handler, x, y, Creature.DEF_WIDTH, Creature.DEF_HEIGHT);
         this.handler = handler;
@@ -26,9 +23,9 @@ public class Player extends Creature {
         left = new Animation(500, Assets.playerLeft);
         right = new Animation(500, Assets.playerRight);
 
-        speed = 6000;
-        timer = 0;
-        lastTime = System.currentTimeMillis();
+        swimming = false;
+        running = false;
+
         bounds.x = 8;
         bounds.y = 4;
         bounds.width = 16;
@@ -37,27 +34,29 @@ public class Player extends Creature {
 
     @Override
     public void update() {
-        timer += System.currentTimeMillis() - lastTime;
-        lastTime = System.currentTimeMillis();
-
         down.update();
         up.update();
         left.update();
         right.update();
 
         if (handler.getKeyManager().run && swimming) {
-            setSpeed(2);
-            running = true;
+            if (stamina > 0) {
+                setSpeed(2);
+                running = true;
+            }
+        } else if (handler.getKeyManager().run) {
+            if (stamina > 0) {
+                setSpeed(4);
+                running = true;
+            }
         } else if (swimming) {
             setSpeed(1);
             running = false;
-        } else if (handler.getKeyManager().run) {
-            setSpeed(4);
-            running = true;
         } else {
             setSpeed(3);
             running = false;
         }
+
         getInput();
         move();
         handler.getGameCamera().centerOn(this);
@@ -88,9 +87,8 @@ public class Player extends Creature {
     public void render(Graphics g) {
         g.drawImage(currentAnimation(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), null);
         if (handler.getWorld().getTile((int) x / Tile.WIDTH, (int) y / Tile.HEIGHT).getId() == 4 ||
-                handler.getWorld().getTile((int) x / Tile.WIDTH, (int) y / Tile.HEIGHT).getId() == 2) {
+            handler.getWorld().getTile((int) x / Tile.WIDTH, (int) y / Tile.HEIGHT).getId() == 2) {
             swimming = true;
-        ///} else if (handler.getWorld().getTile((int) x / Tile.WIDTH, (int) y / Tile.HEIGHT).getId() == null) {
         } else {
             swimming = false;
         }
