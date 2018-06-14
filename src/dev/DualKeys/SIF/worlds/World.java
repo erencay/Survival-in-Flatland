@@ -72,22 +72,19 @@ public class World {
                     }
                 }
                 this.tileMap = new TileMap(tiles);
-                System.out.println("width: " + width);
-                System.out.println("height: " + height);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             Random random = new Random();
             RandomWorldGenerator randomWorldGenerator = new RandomWorldGenerator();
-            int[][] tokens1 = randomWorldGenerator.generateWorld(2, 26, random.nextLong());
+            int[][] tokens1 = randomWorldGenerator.generateWorld(10, 19, random.nextLong());
             this.tileMap = new TileMap(tokens1);
             this.width = this.tileMap.getWidth();
             this.height = this.tileMap.getHeight();
-            System.out.println("width: " + width);
-            System.out.println("height: " + height);
         }
     }
+
 
     public int getSpawnX() {
         return this.spawnX;
