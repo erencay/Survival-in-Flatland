@@ -3,7 +3,6 @@ package dev.DualKeys.SIF.UI;
 import dev.DualKeys.SIF.Handler;
 import dev.DualKeys.SIF.entities.creatures.Player;
 import dev.DualKeys.SIF.graphics.Assets;
-import dev.DualKeys.SIF.states.GameState;
 
 import java.awt.*;
 
@@ -19,7 +18,7 @@ public class GUI {
     
     private int speed, hSpeed;
     private int health, hunger;
-    private int time;
+    private long time;
     private int days;
     private long lastTime, timer, hTimer;
     
@@ -31,11 +30,7 @@ public class GUI {
         hSpeed = 5000;
         timer = 0;
         hTimer = 0;
-        time = (int)GameState.getTimer() / 100;
-        days = GameState.getDays();
         lastTime = System.currentTimeMillis();
-        System.out.println(time);
-        System.out.println(days);
     }
     
     public void update() {
@@ -68,8 +63,10 @@ public class GUI {
         player.setHealth(health);
         player.setHunger(hunger);
     }
-    
-    public void render(Graphics g) {
+
+    public void render(Graphics g, long time, int days) {
+        this.time = time / 1000;
+        this.days = days;
         // Background of GUI
         for (int i = 0; i < handler.getWidth(); i += 32) {
             g.drawImage(Assets.woodUI, i, handler.getHeight() - 32, null);
@@ -96,6 +93,7 @@ public class GUI {
 	    g.drawString(health + " / 100", 6 + (100 - w / 2), handler.getHeight() - 10);
 	    g.drawString(hunger + " / 100", handler.getWidth() - 6 - (100 + wh / 2), handler.getHeight() - 10);
 	    g.drawString("Day: " + days + " Time: " + time, handler.getWidth() / 2 - wt / 2, handler.getHeight() - 10);
+	    g.drawString("test", 0, 0);
     }
     
 }

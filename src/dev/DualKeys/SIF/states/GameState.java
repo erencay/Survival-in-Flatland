@@ -23,7 +23,7 @@ public class GameState extends State {
     public GameState(Handler handler) {
         super(handler);
         Assets.init();
-        world = new World(handler, getClass().getResourceAsStream("/Worlds/world1.world"));
+        world = new World(handler, getClass().getResourceAsStream("/Worlds/world.world"));
         handler.setWorld(world);
         player = new Player(handler, 32, 32);
         gui = new GUI(handler, player);
@@ -56,7 +56,7 @@ public class GameState extends State {
         timer += System.currentTimeMillis() - lastTime;
         zTimer += System.currentTimeMillis() - lastTime;
         lastTime = System.currentTimeMillis();
-        if (timer >= 144000) {
+        if (timer >= 1440000) {
             timer = 0;
             days++;
         }
@@ -85,14 +85,6 @@ public class GameState extends State {
                 zombies[i].render(g);
             }
         }
-        gui.render(g);
-    }
-
-    public static int getDays() {
-        return days;
-    }
-
-    public static long getTimer() {
-        return timer;
+        gui.render(g, timer, days);
     }
 }
