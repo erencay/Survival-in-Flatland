@@ -3,6 +3,7 @@ package dev.DualKeys.SIF.entities.creatures;
 import dev.DualKeys.SIF.Handler;
 import dev.DualKeys.SIF.graphics.Animation;
 import dev.DualKeys.SIF.graphics.Assets;
+import dev.DualKeys.SIF.tiles.Tile;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -20,6 +21,11 @@ public class Player extends Creature {
         up = new Animation(500, Assets.playerUp);
         left = new Animation(500, Assets.playerLeft);
         right = new Animation(500, Assets.playerRight);
+
+        bounds.x = 8;
+        bounds.y = 4;
+        bounds.width = 16;
+        bounds.height = 28;
     }
 
     @Override
@@ -57,6 +63,17 @@ public class Player extends Creature {
     @Override
     public void render(Graphics g) {
         g.drawImage(currentAnimation(), (int)(x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), null);
+        if (handler.getWorld().getTile((int)x / Tile.WIDTH, (int)y / Tile.HEIGHT).getId() == 4 ||
+            handler.getWorld().getTile((int)x / Tile.WIDTH, (int)y / Tile.HEIGHT).getId() == 2) {
+            setSpeed(1);
+        } else {
+            setSpeed(3);
+        }
+        g.setColor(Color.red);
+        g.drawRect((int)(bounds.x + x - handler.getGameCamera().getxOffset()),
+                    (int)(bounds.y + y - handler.getGameCamera().getyOffset()),
+                    bounds.width,
+                    bounds.height);
     }
 
     private BufferedImage currentAnimation() {

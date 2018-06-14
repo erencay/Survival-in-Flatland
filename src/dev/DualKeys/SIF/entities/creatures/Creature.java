@@ -2,6 +2,7 @@ package dev.DualKeys.SIF.entities.creatures;
 
 import dev.DualKeys.SIF.Handler;
 import dev.DualKeys.SIF.entities.Entity;
+import dev.DualKeys.SIF.tiles.Tile;
 
 public abstract class Creature extends Entity {
 
@@ -27,8 +28,44 @@ public abstract class Creature extends Entity {
     }
 
     public void move() {
-        x += xMove;
-        y += yMove;
+        moveX();
+        moveY();
+    }
+
+    public void moveX() {
+        if (xMove > 0) {  // left
+            int tx = (int)(x + xMove + bounds.x + bounds.width) / Tile.WIDTH;
+            if (!collision(tx, (int)(y + bounds.y) / Tile.HEIGHT) && !collision(tx, (int) (y + bounds.y + bounds.height) / Tile.HEIGHT)) {
+                x += xMove;
+            }
+        } else if (xMove < 0) {  // right
+            int tx = (int) (x + xMove + bounds.x) / Tile.WIDTH;
+            if(!collision(tx, (int) (y + bounds.y) / Tile.HEIGHT) &&
+                    !collision(tx, (int) (y + bounds.y + bounds.height) / Tile.HEIGHT)){
+                x += xMove;
+            }
+        }
+    }
+
+    public void moveY() {
+        if(yMove < 0){//Up
+            int ty = (int) (y + yMove + bounds.y) / Tile.HEIGHT;
+            if(!collision((int) (x + bounds.x) / Tile.WIDTH, ty) &&
+                    !collision((int) (x + bounds.x + bounds.width) / Tile.WIDTH, ty)){
+                y += yMove;
+            }
+        }else if(yMove > 0){//Down
+            int ty = (int) (y + yMove + bounds.y + bounds.height) / Tile.HEIGHT;
+
+            if(!collision((int) (x + bounds.x) / Tile.WIDTH, ty) &&
+                    !collision((int) (x + bounds.x + bounds.width) / Tile.WIDTH, ty)){
+                y += yMove;
+            }
+        }
+    }
+
+    protected boolean collision(int x, int y) {
+        return handler.getWorld().getTile(x, y).isSolid();
     }
 
     public int getHealth() {
