@@ -232,24 +232,36 @@ public class RandomWorldChunkGenerator {
         for(int i = 0; i < tokens.length; ++i) {
             for(int j = 0; j < tokens[i].length; ++j) {
                 if (tokens[i][j] == 2) {
-                    if (j + 1 < tokens[i].length && tokens[i][j + 1] != 2) {
-                        tokens[i][j + 1] = 3;
-                    }
-                    if (i + 1 < tokens.length && tokens[i + 1][j] != 2) {
-                        tokens[i + 1][j] = 3;
-                    }
-                    if (i + 1 < tokens.length && j + 1 < tokens[i].length && tokens[i + 1][j + 1] != 2) {
-                        tokens[i + 1][j + 1] = 3;
-                    }
-                    if (j - 1 >= 0 && tokens[i][j - 1] != 2) {
-                        tokens[i][j - 1] = 3;
-                    }
-                    if (i - 1 >= 0 && tokens[i - 1][j] != 2) {
-                        tokens[i - 1][j] = 3;
-                    }
-                    if (i - 1 >= 0 && j - 1 >= 0 && tokens[i - 1][j - 1] != 2) {
-                        tokens[i - 1][j - 1] = 3;
-                    }
+                    if (j + 1 < tokens[i].length) {
+                        if (tokens[i][j + 1] != 2) {
+                            tokens[i][j + 1] = 3;
+                        }
+                    } else tokens[i][j] = 3;
+                    if (i + 1 < tokens.length) {
+                        if (tokens[i + 1][j] != 2) {
+                            tokens[i + 1][j] = 3;
+                        }
+                    } else tokens[i][j] = 3;
+                    if (i + 1 < tokens.length && j + 1 < tokens[i].length) {
+                        if(tokens[i + 1][j + 1] != 2) {
+                            tokens[i + 1][j + 1] = 3;
+                        }
+                    } else tokens[i][j] = 3;
+                    if (j - 1 >= 0) {
+                        if (tokens[i][j - 1] != 2) {
+                            tokens[i][j - 1] = 3;
+                        }
+                    } else tokens[i][j] = 3;
+                    if (i - 1 >= 0) {
+                        if (tokens[i - 1][j] != 2) {
+                            tokens[i - 1][j] = 3;
+                        }
+                    } else tokens[i][j] = 3;
+                    if (i - 1 >= 0 && j - 1 >= 0) {
+                        if(tokens[i - 1][j - 1] != 2) {
+                            tokens[i - 1][j - 1] = 3;
+                        }
+                    } else tokens[i][j] = 3;
                 }
             }
         }
