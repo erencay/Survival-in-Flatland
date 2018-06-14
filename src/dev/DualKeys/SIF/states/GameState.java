@@ -60,7 +60,7 @@ public class GameState extends State {
             timer = 0;
             days++;
         }
-        if (timer > night && timer < day) {
+        if (timer > night || timer < day) {
             if (zTimer > zTime) {
                 zTimer = 0;
                 for (int i = 0; i < zombies.length; i++) {
