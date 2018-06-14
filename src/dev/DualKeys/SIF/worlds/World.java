@@ -80,8 +80,10 @@ public class World {
             RandomWorldGenerator randomWorldGenerator = new RandomWorldGenerator();
             int[][] tokens1 = randomWorldGenerator.generateWorld(2, 25, random.nextLong());
             this.tileMap = new TileMap(tokens1);
-            this.width = this.tileMap.getSize();
-            this.height = this.tileMap.getSize();
+            this.width = this.tileMap.getWidth();
+            this.height = this.tileMap.getHeight();
+            System.out.println(width);
+            System.out.println(height);
         }
     }
 

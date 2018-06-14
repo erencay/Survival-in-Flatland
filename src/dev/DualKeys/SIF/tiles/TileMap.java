@@ -2,16 +2,19 @@ package dev.DualKeys.SIF.tiles;
 
 public class TileMap {
     private int[][] tiles;
-    private int size;
+    private int width;
+    private int height;
 
-    public TileMap(int size) {
-        this.tiles = new int[size][size];
-        this.size = size;
+    public TileMap(int height, int width) {
+        this.tiles = new int[height][width];
+        this.height = height;
+        this.width = width;
     }
 
     public TileMap(int[][] tiles) {
         this.tiles = tiles;
-        this.size = tiles.length;
+        this.height = tiles.length;
+        this.width = tiles[0].length;
     }
 
     public Tile getTile(int x, int y) {
@@ -44,7 +47,11 @@ public class TileMap {
         return this.tiles;
     }
 
-    public int getSize() {
-        return this.size;
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }
