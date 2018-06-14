@@ -38,17 +38,14 @@ public class World {
         int yStart = (int)Math.max(0.0F, this.handler.getGameCamera().getyOffset() / Tile.HEIGHT);
         int yEnd = (int)Math.min(this.height, (this.handler.getGameCamera().getyOffset() + this.handler.getHeight()) / Tile.WIDTH + 1.0F);
 
-        System.out.println(xStart + ":" + xEnd + ":" + yStart + ":" + yEnd);
         for(int y = yStart; y < yEnd; y++) {
             for(int x = xStart; x < xEnd; x++) {
-                //System.out.println("x: " + x + " y: " + y);
                 this.getTile(x, y).render(g, (int)((x * Tile.WIDTH) - this.handler.getGameCamera().getxOffset()), (int)((y * Tile.HEIGHT) - this.handler.getGameCamera().getyOffset()));
             }
         }
-
     }
 
-    public Tile getTile(int x, int y) {
+    private Tile getTile(int x, int y) {
         return this.tileMap.getTile(x, y);
     }
 
@@ -73,21 +70,36 @@ public class World {
                         this.tiles[x][y] = Utils.parseInt(tokens.get(x + y * this.width));
                     }
                 }
+
+//                for (int i = 0; i < tiles.length; i++) {
+//                    for (int j = 0; j < tiles[i].length; j++) {
+//                        System.out.print(tiles[i][j] + " ");
+//                    }
+//                    System.out.println();
+//                }
+
                 this.tileMap = new TileMap(tiles);
-                System.out.println("width: " + width);
-                System.out.println("height: " + height);
+//                System.out.println("width: " + width);
+//                System.out.println("height: " + height);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             Random random = new Random();
             RandomWorldGenerator randomWorldGenerator = new RandomWorldGenerator();
-            int[][] tokens1 = randomWorldGenerator.generateWorld(2, 25, random.nextLong());
+            int[][] tokens1 = randomWorldGenerator.generateWorld(10, 19, random.nextLong());
             this.tileMap = new TileMap(tokens1);
             this.width = this.tileMap.getWidth();
             this.height = this.tileMap.getHeight();
-            System.out.println("width: " + width);
-            System.out.println("height: " + height);
+//            System.out.println("width: " + width);
+//            System.out.println("height: " + height);
+//            for (int i = 0; i < tileMap.getWidth(); i++) {
+//                for (int j = 0; j < tileMap.getHeight(); j++) {
+//                    System.out.print(tokens1[i][j] + " ");
+//                }
+//                System.out.println();
+//            }
+
         }
     }
 
