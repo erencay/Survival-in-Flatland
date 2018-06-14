@@ -76,10 +76,11 @@ public class Player extends Creature {
     
     @Override
     public void render(Graphics g) {
-        g.drawImage(currentAnimation(), (int)(x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), null);
-        if (handler.getWorld().getTile((int)x / Tile.WIDTH, (int)y / Tile.HEIGHT).getId() == 4 ||
-            handler.getWorld().getTile((int)x / Tile.WIDTH, (int)y / Tile.HEIGHT).getId() == 2) {
+        g.drawImage(currentAnimation(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), null);
+        if (handler.getWorld().getTile((int) x / Tile.WIDTH, (int) y / Tile.HEIGHT).getId() == 4 ||
+                handler.getWorld().getTile((int) x / Tile.WIDTH, (int) y / Tile.HEIGHT).getId() == 2) {
             swimming = true;
+        ///} else if (handler.getWorld().getTile((int) x / Tile.WIDTH, (int) y / Tile.HEIGHT).getId() == null) {
         } else {
             swimming = false;
         }

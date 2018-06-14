@@ -19,8 +19,6 @@ public class World {
     private Handler handler;
     private int width;
     private int height;
-    private int spawnX;
-    private int spawnY;
     private int[][] tiles;
     private TileMap tileMap;
 
@@ -34,16 +32,15 @@ public class World {
 
     public void render(Graphics g) {
         int xStart = (int)Math.max(0.0F, this.handler.getGameCamera().getxOffset() / Tile.WIDTH);
-        int xEnd = (int)Math.min((float)this.width, (this.handler.getGameCamera().getxOffset() + (float)this.handler.getWidth()) / Tile.WIDTH + 1.0F);
-        int yStart = (int)Math.max(0.0F, this.handler.getGameCamera().getyOffset() / Tile.WIDTH);
-        int yEnd = (int)Math.min((float)this.height, (this.handler.getGameCamera().getyOffset() + (float)this.handler.getHeight()) / Tile.WIDTH);
+        int xEnd = (int)Math.min(this.width, (this.handler.getGameCamera().getxOffset() + this.handler.getWidth()) / Tile.WIDTH + 1.0F);
+        int yStart = (int)Math.max(0.0F, this.handler.getGameCamera().getyOffset() / Tile.HEIGHT);
+        int yEnd = (int)Math.min(this.height, (this.handler.getGameCamera().getyOffset() + this.handler.getHeight()) / Tile.WIDTH + 1.0F);
 
         for(int y = yStart; y < yEnd; y++) {
             for(int x = xStart; x < xEnd; x++) {
-                this.getTile(x, y).render(g, (int)((x * Tile.WIDTH) - this.handler.getGameCamera().getxOffset()), (int)((y * Tile.WIDTH) - this.handler.getGameCamera().getyOffset()));
+                this.getTile(x, y).render(g, (int)((x * Tile.WIDTH) - this.handler.getGameCamera().getxOffset()), (int)((y * Tile.HEIGHT) - this.handler.getGameCamera().getyOffset()));
             }
         }
-
     }
 
     public Tile getTile(int x, int y) {
@@ -68,7 +65,7 @@ public class World {
 
                 for (int y = 0; y < this.height; y++) {
                     for (int x = 0; x < this.width; x++) {
-                        //this.tiles[x][y] = Utils.parseInt(tokens.get(x + y * this.width));
+                        this.tiles[x][y] = Utils.parseInt(tokens.get(x + y * this.width));
                     }
                 }
                 this.tileMap = new TileMap(tiles);
@@ -78,21 +75,11 @@ public class World {
         } else {
             Random random = new Random();
             RandomWorldGenerator randomWorldGenerator = new RandomWorldGenerator();
-            int[][] tokens1 = randomWorldGenerator.generateWorld(2, 26, random.nextLong());
+            int[][] tokens1 = randomWorldGenerator.generateWorld(10, 25, random.nextLong());
             this.tileMap = new TileMap(tokens1);
             this.width = this.tileMap.getWidth();
             this.height = this.tileMap.getHeight();
-            System.out.println(width);
-            System.out.println(height);
         }
-    }
-
-    public int getSpawnX() {
-        return this.spawnX;
-    }
-
-    public int getSpawnY() {
-        return this.spawnY;
     }
 
     public int getWidth() {

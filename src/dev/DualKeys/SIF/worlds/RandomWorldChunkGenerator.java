@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class RandomWorldChunkGenerator {
     // frequency of dirts
-    private static final int DIRT_FREQUENCY = 15;
+    private static final int DIRT_FREQUENCY = 10;
     // frequency of rivers
     private static final int RIVER_FREQUENCY = 100;
     private static RandomWorldChunkGenerator randomWorldChunkGenerator;
