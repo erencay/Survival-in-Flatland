@@ -37,8 +37,6 @@ public class GUI {
         hTimer = 0;
         dTimer = 0;
         sTimer = 0;
-        days = gameTimeManager.getGameTimeInfo().Days;
-        time = gameTimeManager.getGameTimeInfo();
         lastTime = System.currentTimeMillis();
     }
     
@@ -88,6 +86,10 @@ public class GUI {
     public void render(Graphics g) {
         dTimer += System.currentTimeMillis() - lastTime;
         lastTime = System.currentTimeMillis();
+
+        days = gameTimeManager.getGameTimeInfo().Days;
+        time = gameTimeManager.getGameTimeInfo();
+
         // Background of GUI
         for (int i = 0; i < handler.getWidth(); i += 60) {
             g.drawImage(Assets.woodUI, i, handler.getHeight() - 64, null);
