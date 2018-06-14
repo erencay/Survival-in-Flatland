@@ -66,8 +66,8 @@ public class World {
 
                 this.tiles = new int[this.width][this.height];
 
-                for (int y = 0; y < this.height; ++y) {
-                    for (int x = 0; x < this.width; ++x) {
+                for (int y = 0; y < this.height; y++) {
+                    for (int x = 0; x < this.width; x++) {
                         this.tiles[x][y] = Utils.parseInt(tokens.get(x + y * this.width));
                     }
                 }
@@ -78,7 +78,7 @@ public class World {
         } else {
             Random random = new Random();
             RandomWorldGenerator randomWorldGenerator = new RandomWorldGenerator();
-            int[][] tokens1 = randomWorldGenerator.generateWorld(2, 25, random.nextLong());
+            int[][] tokens1 = randomWorldGenerator.generateWorld(2, 26, random.nextLong());
             this.tileMap = new TileMap(tokens1);
             this.width = this.tileMap.getWidth();
             this.height = this.tileMap.getHeight();

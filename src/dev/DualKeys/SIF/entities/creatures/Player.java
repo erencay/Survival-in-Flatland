@@ -12,6 +12,7 @@ public class Player extends Creature {
 
     private Handler handler;
     private Animation up, down, left, right;
+    private boolean swimming;
 
     public Player(Handler handler, int x, int y) {
         super(handler, x, y, Creature.DEF_WIDTH, Creature.DEF_HEIGHT);
@@ -34,6 +35,15 @@ public class Player extends Creature {
         up.update();
         left.update();
         right.update();
+        if (handler.getKeyManager().run && swimming) {
+            setSpeed(4);
+        } else if (swimming) {
+            setSpeed(1);
+        } else if (handler.getKeyManager().run) {
+            setSpeed(2);
+        } else {
+            setSpeed(3);
+        }
         getInput();
         move();
         handler.getGameCamera().centerOn(this);
@@ -65,9 +75,9 @@ public class Player extends Creature {
         g.drawImage(currentAnimation(), (int)(x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), null);
         if (handler.getWorld().getTile((int)x / Tile.WIDTH, (int)y / Tile.HEIGHT).getId() == 4 ||
             handler.getWorld().getTile((int)x / Tile.WIDTH, (int)y / Tile.HEIGHT).getId() == 2) {
-            setSpeed(1);
+            swimming = true;
         } else {
-            setSpeed(3);
+            swimming = false;
         }
         g.setColor(Color.red);
         g.drawRect((int)(bounds.x + x - handler.getGameCamera().getxOffset()),
