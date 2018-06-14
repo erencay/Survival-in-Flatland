@@ -10,8 +10,10 @@ import java.awt.*;
 
 public class GUI {
 
-    private static final int MAX_HEALTH = 100;
-    private static final int MAX_HUNGER = 100;
+    private final int MAX_HEALTH = 100;
+    private final int MAX_HUNGER = 100;
+    private final int MAX_STAMINA = 50;
+    private final int MAX_THIRST = 100;
     
     private Player player;
     private Handler handler;
@@ -54,6 +56,9 @@ public class GUI {
         if (handler.getState() == handler.getGameState()) {
             if (timer > speed) {
                 timer = 0;
+                if (stamina < MAX_STAMINA && !player.running) {
+                    stamina++;
+                }
                 if (health < MAX_HEALTH && hunger >= 85) {
                     health++;
                 }
@@ -75,6 +80,12 @@ public class GUI {
                 hunger = 100;
             } else if (thirst > 100) {
                 thirst = 100;
+            }
+
+            if (sTimer > sSpeed) {
+                if (player.running) {
+                    stamina--;
+                }
             }
         }
         player.setHealth(health);
@@ -109,7 +120,7 @@ public class GUI {
 
         // Thirst
         g.setColor(Color.decode("0x00ffff"));
-        g.fillRect(handler.getWidth() - 206 + ((100 - hunger) * 2), handler.getHeight() - (26 * 2), 200 - ((100 - thirst) * 2), 20);
+        g.fillRect(handler.getWidth() - 206 + ((100 - thirst) * 2), handler.getHeight() - (26 * 2), 200 - ((100 - thirst) * 2), 20);
         g.setColor(Color.black);
         g.drawRect(handler.getWidth() - 206, handler.getHeight() - (26 * 2), 200, 20);
 

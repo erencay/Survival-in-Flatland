@@ -12,7 +12,10 @@ public class Player extends Creature {
 
     private Handler handler;
     private Animation up, down, left, right;
-    private boolean swimming, running;
+    public boolean swimming, running;
+
+    private int speed;
+    private long lastTime, timer;
 
     public Player(Handler handler, int x, int y) {
         super(handler, x, y, Creature.DEF_WIDTH, Creature.DEF_HEIGHT);
@@ -23,6 +26,9 @@ public class Player extends Creature {
         left = new Animation(500, Assets.playerLeft);
         right = new Animation(500, Assets.playerRight);
 
+        speed = 6000;
+        timer = 0;
+        lastTime = System.currentTimeMillis();
         bounds.x = 8;
         bounds.y = 4;
         bounds.width = 16;
@@ -31,10 +37,14 @@ public class Player extends Creature {
 
     @Override
     public void update() {
+        timer += System.currentTimeMillis() - lastTime;
+        lastTime = System.currentTimeMillis();
+
         down.update();
         up.update();
         left.update();
         right.update();
+
         if (handler.getKeyManager().run && swimming) {
             setSpeed(2);
             running = true;
