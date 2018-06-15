@@ -40,15 +40,11 @@ public class Player extends Creature {
         right.update();
 
         if (handler.getKeyManager().run && swimming) {
-            if (stamina > 0) {
                 setSpeed(2);
                 running = true;
-            }
         } else if (handler.getKeyManager().run) {
-            if (stamina > 0) {
                 setSpeed(4);
                 running = true;
-            }
         } else if (swimming) {
             setSpeed(1);
             running = false;
@@ -80,6 +76,7 @@ public class Player extends Creature {
         }
         if (handler.getKeyManager().food) {
             hunger += 10;
+            thirst += 10;
         }
     }
     
@@ -92,11 +89,11 @@ public class Player extends Creature {
         } else {
             swimming = false;
         }
-        g.setColor(Color.red);
-        g.drawRect((int)(bounds.x + x - handler.getGameCamera().getxOffset()),
-                    (int)(bounds.y + y - handler.getGameCamera().getyOffset()),
-                    bounds.width,
-                    bounds.height);
+        //g.setColor(Color.red);
+        //g.drawRect((int)(bounds.x + x - handler.getGameCamera().getxOffset()),
+        //            (int)(bounds.y + y - handler.getGameCamera().getyOffset()),
+        //            bounds.width,
+        //            bounds.height);
     }
 
     private BufferedImage currentAnimation() {

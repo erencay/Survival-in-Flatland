@@ -23,14 +23,20 @@ public class GameState extends State {
     GameTimeInfo timeInfo;
     GameTimeInfo lastZombieSpawn;
 
+    private int spawnX;
+    private int spawnY;
+
     public GameState(Handler handler, GameTimeManager gameTimeManager) {
         super(handler);
         this.gameTimeManager = gameTimeManager;
+        world = new World(handler, getClass().getResourceAsStream("/Worlds/default.world"), false);
+        handler.setWorld(world);
         Assets.init();
 
-        world = new World(handler, getClass().getResourceAsStream("/Worlds/test.world"), false);
-        handler.setWorld(world);
-        player = new Player(handler, 32, 32);
+        spawnX = (int)Math.floor(Math.random() * (handler.getWorld().getWidth() * Tile.WIDTH));
+        spawnY = (int)Math.floor(Math.random() * (handler.getWorld().getHeight() * Tile.HEIGHT));
+
+        player = new Player(handler, spawnX, spawnY);
         gui = new GUI(handler, player, gameTimeManager);
         zombies = new Zombie[11];
     }
@@ -58,8 +64,8 @@ public class GameState extends State {
                     if (zombies[i] == null) {
                         zombies[i] = new Zombie(handler,
                                 player,
-                                (float) Math.floor(Math.random() * (handler.getWorld().getWidth() * Tile.WIDTH)),
-                                (float) Math.floor(Math.random() * (handler.getWorld().getHeight() * Tile.HEIGHT)));
+                                (float)Math.floor(Math.random() * (handler.getWorld().getWidth() * Tile.WIDTH)),
+                                (float)Math.floor(Math.random() * (handler.getWorld().getHeight() * Tile.HEIGHT)));
                         lastZombieSpawn = currentTime;
                         break;
                     }

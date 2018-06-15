@@ -1,5 +1,7 @@
 package dev.DualKeys.SIF;
 
+import dev.DualKeys.SIF.entities.creatures.Player;
+
 public class GameTimeManager {
     private int days;
     private short hours, minutes;
@@ -34,6 +36,7 @@ public class GameTimeManager {
         {
             hours++;
             minutes = (short) (minutes % 60);
+            Player.setXP(Player.getXP() + 1);
         }
 
         if (hours >= 24)
