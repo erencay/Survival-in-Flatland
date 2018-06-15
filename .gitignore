@@ -1,5 +1,6 @@
-/.idea/*
-/build/*
-/classes/*
+.idea
+build
+out
+classes
 build.xml
-SIF.iml
+*.iml
