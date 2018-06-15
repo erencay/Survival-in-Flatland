@@ -36,14 +36,15 @@ public class Game implements Runnable {
         this.title = title;
         this.width = width;
         this.height = height;
-        keyManager = new KeyManager();
-        
+
         handler = new Handler(this);
         gameCamera = new GameCamera(handler, 0, 0);
         gameTimeManager = new GameTimeManager(1,(short)9, (short)01);
 
         gameState = new GameState(handler, gameTimeManager);
         menuState = new Menu(handler);
+
+        keyManager = new KeyManager(handler);
 
         this.start();
     }

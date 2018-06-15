@@ -1,14 +1,7 @@
 package dev.DualKeys.SIF.sound;
 
+import javax.sound.sampled.*;
 import java.io.IOException;
-import static java.lang.Thread.MAX_PRIORITY;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class SoundThread extends Thread {
 
@@ -44,6 +37,10 @@ public class SoundThread extends Thread {
         //soundClip.setLoopPoints(0, 203);
         soundClip.loop(Clip.LOOP_CONTINUOUSLY);
         
+    }
+
+    public void () {
+        soundClip.stop();
     }
 
     public void run() {

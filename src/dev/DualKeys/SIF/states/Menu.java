@@ -8,10 +8,10 @@ import java.awt.*;
 public class Menu extends State {
 
 
-    private Handler handler;
+    public static Handler handler;
 
-    private int choice = 0;
-    private final String[] options = {
+    public static int choice = 0;
+    public static final String[] options = {
             "Start",
             "Settings",
             "Quit"
@@ -26,7 +26,6 @@ public class Menu extends State {
 
     @Override
     public void update() {
-        keyPressed();
     }
 
     @Override
@@ -46,7 +45,7 @@ public class Menu extends State {
         g.drawImage(Assets.title, handler.getWidth() / 2 - 256, 64, 512, 64, null);
     }
 
-    private void select() {
+    public static void select() {
         switch (choice) {
             case 0:
                 StateManager.setState(handler.getGameState());
@@ -58,24 +57,6 @@ public class Menu extends State {
                 System.exit(0);
             default:
                 break;
-        }
-    }
-
-    public void keyPressed() {
-        if(handler.getKeyManager().select){
-            select();
-        }
-        if(handler.getKeyManager().menuUp) {
-            choice--;
-            if(choice == -1) {
-                choice = options.length - 1;
-            }
-        }
-        if(handler.getKeyManager().menuDown) {
-            choice++;
-            if(choice == options.length) {
-                choice = 0;
-            }
         }
     }
 

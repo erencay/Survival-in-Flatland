@@ -47,6 +47,10 @@ public class GameState extends State {
         player.update();
         gui.update();
 
+        if (handler.getKeyManager().quit) {
+            StateManager.setState(handler.getMenuState());
+        }
+
         GameTimeInfo currentTime = gameTimeManager.getGameTimeInfo();
 
         for (int i = 0; i < zombies.length - 1; i++) {

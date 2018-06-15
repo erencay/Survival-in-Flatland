@@ -1,14 +1,20 @@
 package dev.DualKeys.SIF.input;
 
+import dev.DualKeys.SIF.Handler;
+import dev.DualKeys.SIF.states.Menu;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyManager implements KeyListener {
 
-    public boolean[] keys;
-    public boolean up, down, left, right, food, select, menuDown, menuUp, run;
+    private Handler handler;
 
-    public KeyManager() {
+    private boolean[] keys;
+    public boolean up, down, left, right, food, select, menuDown, menuUp, run, quit;
+
+    public KeyManager(Handler handler) {
+        this.handler = handler;
         keys = new boolean[256];
     }
 
@@ -22,11 +28,30 @@ public class KeyManager implements KeyListener {
         menuDown = keys[KeyEvent.VK_DOWN];
         menuUp = keys[KeyEvent.VK_UP];
         run = keys[KeyEvent.VK_SHIFT];
+        quit = keys[KeyEvent.VK_ESCAPE];
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         keys[e.getKeyCode()] = true;
+
+        if (handler.getGameState() == handler.getMenuState()) {
+            if (select) {
+                Menu.select();
+            }
+            if (menuUp) {
+                Menu.choice--;
+                if (Menu.choice == -1) {
+                    Menu.choice = Menu.options.length - 1;
+                }
+            }
+            if (menuDown) {
+                Menu.choice++;
+                if (Menu.choice == Menu.options.length) {
+                    Menu.choice = 0;
+                }
+            }
+        }
     }
 
     @Override

@@ -30,7 +30,6 @@ public class GameTimeManager {
         {
             lastTime = currentTime;
             minutes += (short) (elapsed / 1000);
-            Player.setXP(Player.getXP() + 1);
         }
 
         if (minutes >= 60)
@@ -47,17 +46,15 @@ public class GameTimeManager {
         }
     }
 
-    public void pauseGameTime()
-    {
+    public void pauseGameTime() {
         isPaused = true;
     }
 
-    public void unPauseGameTime()
-    {
+    public void unPauseGameTime() {
         this.lastTime = System.currentTimeMillis();
-
         isPaused = false;
     }
+
     public GameTimeInfo getGameTimeInfo() {
         return new GameTimeInfo(days, hours, minutes, SUNDOWNHOUR, SUNUPHOUR, isPaused);
     }
