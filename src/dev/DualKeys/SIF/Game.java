@@ -40,7 +40,7 @@ public class Game implements Runnable {
         
         handler = new Handler(this);
         gameCamera = new GameCamera(handler, 0, 0);
-        gameTimeManager = new GameTimeManager(1,(short)1, (short)01);
+        gameTimeManager = new GameTimeManager(1,(short)9, (short)01);
 
         gameState = new GameState(handler, gameTimeManager);
         menuState = new Menu(handler);

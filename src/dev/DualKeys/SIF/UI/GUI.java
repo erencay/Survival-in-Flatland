@@ -82,7 +82,7 @@ public class GUI {
                 xp = xp % player.nextLvl;
                 player.nextLvl += 7;
             }
-
+            System.out.println(xp);
         }
         player.setHealth(health);
         player.setHunger(hunger);
@@ -103,25 +103,25 @@ public class GUI {
         }
 
         // Health
-        g.setColor(Color.red);
+        g.setColor(Color.decode("0xcd5c5c"));
         g.fillRect(6, handler.getHeight() - 26, health * 2, 20);
         g.setColor(Color.black);
         g.drawRect(6, handler.getHeight() - 26, 200, 20);
 
         // Hunger
-        g.setColor(Color.green);
+        g.setColor(Color.decode("0x00a86b"));
         g.fillRect(handler.getWidth() - 206 + ((100 - hunger) * 2), handler.getHeight() - 26, 200 - ((100 - hunger) * 2), 20);
         g.setColor(Color.black);
         g.drawRect(handler.getWidth() - 206, handler.getHeight() - 26, 200, 20);g.setColor(Color.green);
 
         // Thirst
-        g.setColor(Color.decode("0x00ffff"));
+        g.setColor(Color.decode("0x6495ed"));
         g.fillRect(handler.getWidth() - 206 + ((100 - thirst) * 2), handler.getHeight() - (26 * 2), 200 - ((100 - thirst) * 2), 20);
         g.setColor(Color.black);
         g.drawRect(handler.getWidth() - 206, handler.getHeight() - (26 * 2), 200, 20);
 
-        // Stamina
-        g.setColor(Color.blue);
+        // Level
+        g.setColor(Color.decode("0xfada5e"));
         g.fillRect(6, handler.getHeight() - (26 * 2), xp * 2, 20);
         g.setColor(Color.black);
         g.drawRect(6, handler.getHeight() - (26 * 2), 200, 20);

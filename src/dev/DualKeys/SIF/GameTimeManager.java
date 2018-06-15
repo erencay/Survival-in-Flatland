@@ -30,6 +30,7 @@ public class GameTimeManager {
         {
             lastTime = currentTime;
             minutes += (short) (elapsed / 1000);
+            Player.setXP(Player.getXP() + 1);
         }
 
         if (minutes >= 60)

@@ -15,7 +15,7 @@ public abstract class Creature extends Entity {
 
     protected Handler handler;
     protected int health, hunger, thirst;
-    protected static int xp, level;
+    protected static int xp = 0, level;
     protected float speed;
     protected float xMove, yMove;
     public static int nextLvl;
@@ -31,7 +31,6 @@ public abstract class Creature extends Entity {
         nextLvl = 100;
         xMove = 0;
         yMove = 0;
-        xp = 0;
     }
 
     public void move() {
