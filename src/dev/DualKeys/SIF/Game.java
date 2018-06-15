@@ -25,12 +25,14 @@ public class Game implements Runnable {
 
     public State gameState;
     public State menuState;
+    public StateManager stateManager;
 
     private GameCamera gameCamera;
 
     public static Handler handler;
 
-    private GameTimeManager gameTimeManager;
+    public GameTimeManager gameTimeManager;
+
 
     public Game(String title, int width, int height) {
         this.title = title;
@@ -41,7 +43,8 @@ public class Game implements Runnable {
         gameCamera = new GameCamera(handler, 0, 0);
         gameTimeManager = new GameTimeManager(1,(short)9, (short)01);
 
-        gameState = new GameState(handler, gameTimeManager);
+        stateManager = new StateManager();
+        gameState = new GameState(handler, gameTimeManager, false);
         menuState = new Menu(handler);
 
         keyManager = new KeyManager(handler);
@@ -50,7 +53,7 @@ public class Game implements Runnable {
     }
 
     private void init() {
-        StateManager.setState(menuState);
+        stateManager.setState(menuState);
 
         display = new Launcher(title, width, height);
         display.getFrame().addKeyListener(keyManager);
@@ -61,7 +64,7 @@ public class Game implements Runnable {
     private void update() {
         keyManager.update();
         gameTimeManager.update();
-        StateManager.getState().update();
+        stateManager.getState().update();
     }
 
     private void render() {
@@ -73,7 +76,7 @@ public class Game implements Runnable {
         Graphics g = bs.getDrawGraphics();
         g.clearRect(0, 0, width, height);
         //
-        StateManager.getState().render(g);
+        stateManager.getState().render(g);
         //
         bs.show();
         g.dispose();
@@ -152,5 +155,9 @@ public class Game implements Runnable {
 
     int getFPS() {
         return frames;
+    }
+
+    public GameTimeManager getGameTimeManager() {
+        return gameTimeManager;
     }
 }

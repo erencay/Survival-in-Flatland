@@ -63,4 +63,8 @@ public class Handler {
         return game.getFPS();
     }
 
+    public GameTimeManager getGTM() {
+        return game.getGameTimeManager();
+    }
+
 }

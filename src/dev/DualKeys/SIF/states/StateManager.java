@@ -7,18 +7,28 @@ import dev.DualKeys.SIF.sound.SoundThread;
 public class StateManager {
 
     public static State currentState = null;
+    public static boolean menu, game;
 
     private static SoundThread soundThread;
 
+    public StateManager() {
+        new AudioMap();
+        soundThread = new SoundThread();
+    }
+
     public static State getState() {
-	return currentState;
+	    return currentState;
     }
 
     public static void setState(State state) {
         if (state == Game.getHandler().getGameState()) {
-            new AudioMap();
-            soundThread = new SoundThread();
             soundThread.run();
+            game = true;
+            menu = false;
+        } else if (state == Game.getHandler().getMenuState()) {
+            soundThread.pause();
+            game = false;
+            menu = true;
         }
         currentState = state;
     }

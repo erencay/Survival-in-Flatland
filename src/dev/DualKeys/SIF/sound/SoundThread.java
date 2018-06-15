@@ -39,8 +39,13 @@ public class SoundThread extends Thread {
         
     }
 
-    public void () {
-        soundClip.stop();
+    public void pause() {
+        if (soundClip != null) {
+            soundClip.stop();
+        } else {
+            setSound(0f, 0);
+            soundClip.stop();
+        }
     }
 
     public void run() {

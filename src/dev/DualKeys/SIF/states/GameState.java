@@ -26,10 +26,14 @@ public class GameState extends State {
     private int spawnX;
     private int spawnY;
 
-    public GameState(Handler handler, GameTimeManager gameTimeManager) {
+    public GameState(Handler handler, GameTimeManager gameTimeManager, Boolean isRandom) {
         super(handler);
         this.gameTimeManager = gameTimeManager;
-        world = new World(handler, getClass().getResourceAsStream("/Worlds/default.world"), false);
+        if (!isRandom) {
+            world = new World(handler, getClass().getResourceAsStream("/Worlds/default.world"), false);
+        } else {
+            world = new World(handler, getClass().getResourceAsStream("/Worlds/random.world"), true);
+        }
         handler.setWorld(world);
         Assets.init();
 
@@ -38,7 +42,7 @@ public class GameState extends State {
 
         player = new Player(handler, spawnX, spawnY);
         gui = new GUI(handler, player, gameTimeManager);
-        zombies = new Zombie[11];
+        zombies = new Zombie[51];
     }
 
     @Override
@@ -58,19 +62,21 @@ public class GameState extends State {
                 zombies[i].update();
             }
         }
-        if (zombies[10] != null) {
-            zombies[0] = zombies[10]; // zom6 zom1 zom2 zom3 zom4 zom5 null
-            zombies[10] = null;
+        if (zombies[50] != null) {
+            zombies[0] = zombies[50];
+            zombies[50] = null;
         }
         if (currentTime.isNightTime()) {
             if (lastZombieSpawn == null || currentTime.elapsedMinutes() - lastZombieSpawn.elapsedMinutes() >= 60) {
                 for (int i = 0; i < zombies.length; i++) {
                     if (zombies[i] == null) {
-                        zombies[i] = new Zombie(handler,
-                                player,
-                                (float)Math.floor(Math.random() * (handler.getWorld().getWidth() * Tile.WIDTH)),
-                                (float)Math.floor(Math.random() * (handler.getWorld().getHeight() * Tile.HEIGHT)));
-                        lastZombieSpawn = currentTime;
+                        for(int j = 0; j < 5; j++) {
+                            zombies[i] = new Zombie(handler,
+                                    player,
+                                    (float) Math.floor(Math.random() * (handler.getWorld().getWidth() * Tile.WIDTH)),
+                                    (float) Math.floor(Math.random() * (handler.getWorld().getHeight() * Tile.HEIGHT)));
+                            lastZombieSpawn = currentTime;
+                        }
                         break;
                     }
                 }

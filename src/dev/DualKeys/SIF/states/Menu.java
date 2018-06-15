@@ -51,7 +51,7 @@ public class Menu extends State {
                 StateManager.setState(handler.getGameState());
                 break;
             case 1:
-                StateManager.setState(handler.getGameState());
+                StateManager.setState(new GameState(handler, handler.getGTM(), true));
                 break;
             case 2:
                 System.exit(0);

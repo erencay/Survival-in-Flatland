@@ -24,7 +24,7 @@ public class GUI {
     private int health, hunger, thirst, xp, level;
     private GameTimeInfo time;
     private int days;
-    private long lastTime, timer, hTimer, dTimer;
+    private long lastTime, timer, hTimer;
 
     public GUI(Handler handler, Player player, GameTimeManager gameTimeManager) {
         this.gameTimeManager = gameTimeManager;
@@ -35,7 +35,6 @@ public class GUI {
         hSpeed = 5000;
         timer = 0;
         hTimer = 0;
-        dTimer = 0;
         lastTime = System.currentTimeMillis();
     }
     
@@ -82,7 +81,6 @@ public class GUI {
                 xp = xp % player.nextLvl;
                 player.nextLvl += 7;
             }
-            System.out.println(xp);
         }
         player.setHealth(health);
         player.setHunger(hunger);
@@ -91,9 +89,6 @@ public class GUI {
     }
 
     public void render(Graphics g) {
-        dTimer += System.currentTimeMillis() - lastTime;
-        lastTime = System.currentTimeMillis();
-
         days = gameTimeManager.getGameTimeInfo().Days;
         time = gameTimeManager.getGameTimeInfo();
 
@@ -129,7 +124,6 @@ public class GUI {
         // Font
 	    g.setColor(Color.black);
 	    g.setFont(hFont);
-	    if (dTimer > speed) {
 	        timer = 0;
             int w = g.getFontMetrics().stringWidth(health + " / 100");
             int wh = g.getFontMetrics().stringWidth(hunger + " / 100");
@@ -140,6 +134,5 @@ public class GUI {
             g.drawString(hunger + " / 100", handler.getWidth() - 6 - (100 + wh / 2), handler.getHeight() - 10);
             g.drawString(thirst + " / 100", handler.getWidth() - 6 - (100 + wt / 2), handler.getHeight() - 36);
             g.drawString("Day: " + days + " Time: " + time.Hour + ":" + time.Minute, 0, 15);
-        }
     }
 }
